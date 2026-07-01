@@ -82,13 +82,14 @@ router.get('/overview', authMiddleware, async (c) => {
       const deadline = o.deadline_at as Date
       return {
         id: o.id,
-        incidentId: o.incident_id,
+        incident_id: o.incident_id,
         incidentTitle: incidentTitle.get(o.incident_id) ?? null,
         recipient: o.recipient,
-        recipientType: o.recipient_type,
-        jurisdictionCode: o.jurisdiction_code,
-        deadlineAt: deadline.toISOString(),
+        recipient_type: o.recipient_type,
+        jurisdiction_code: o.jurisdiction_code,
+        deadline_at: deadline.toISOString(),
         hoursRemaining: Math.round(((deadline.getTime() - nowMs) / HOUR_MS) * 10) / 10,
+        is_undue_delay: o.is_undue_delay,
         band: bandFor(deadline, o.is_undue_delay, nowMs),
         status: o.status,
       }
@@ -101,6 +102,12 @@ router.get('/overview', authMiddleware, async (c) => {
       openIncidents: openIncidents.length,
       totalIncidents: myIncidents.length,
       openObligations: myObligations.length,
+      open_incidents: openIncidents.length,
+      overdue: counts.overdue,
+      red: counts.red,
+      amber: counts.amber,
+      green: counts.green,
+      undue: counts.undue,
       byBand: counts,
     },
   })
