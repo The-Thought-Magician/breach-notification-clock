@@ -1,61 +1,40 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { authClient } from '@/lib/auth/client'
+import CommandPalette, { type CommandRoute } from '@/components/CommandPalette'
 
-type NavItem = { label: string; href: string }
-type NavSection = { title: string; items: NavItem[] }
+const ROUTES: CommandRoute[] = [
+  { label: 'Dashboard', href: '/dashboard', group: 'Overview' },
+  { label: 'All Incidents', href: '/dashboard/incidents', group: 'Incidents' },
+  { label: 'New Incident', href: '/dashboard/incidents/new', group: 'Incidents' },
+  { label: 'My Tasks', href: '/dashboard/tasks', group: 'Response' },
+  { label: 'Notifications', href: '/dashboard/notifications', group: 'Response' },
+  { label: 'Rules', href: '/dashboard/rules', group: 'Reference Data' },
+  { label: 'Jurisdictions', href: '/dashboard/jurisdictions', group: 'Reference Data' },
+  { label: 'Regulators', href: '/dashboard/regulators', group: 'Reference Data' },
+  { label: 'Templates', href: '/dashboard/templates', group: 'Reference Data' },
+  { label: 'Contracts', href: '/dashboard/contracts', group: 'Customers & Exposure' },
+  { label: 'Affected Populations', href: '/dashboard/populations', group: 'Customers & Exposure' },
+  { label: 'Exposure Profile', href: '/dashboard/exposure', group: 'Customers & Exposure' },
+  { label: 'Defensibility Packs', href: '/dashboard/packs', group: 'Records & Insight' },
+  { label: 'Analytics', href: '/dashboard/analytics', group: 'Records & Insight' },
+  { label: 'Activity Log', href: '/dashboard/activity', group: 'Records & Insight' },
+  { label: 'Saved Views', href: '/dashboard/views', group: 'Records & Insight' },
+  { label: 'Settings', href: '/dashboard/settings', group: 'Account' },
+]
 
-const SECTIONS: NavSection[] = [
-  {
-    title: 'Overview',
-    items: [{ label: 'Dashboard', href: '/dashboard' }],
-  },
-  {
-    title: 'Incidents',
-    items: [
-      { label: 'All Incidents', href: '/dashboard/incidents' },
-      { label: 'New Incident', href: '/dashboard/incidents/new' },
-    ],
-  },
-  {
-    title: 'Response',
-    items: [
-      { label: 'My Tasks', href: '/dashboard/tasks' },
-      { label: 'Notifications', href: '/dashboard/notifications' },
-    ],
-  },
-  {
-    title: 'Reference Data',
-    items: [
-      { label: 'Rules', href: '/dashboard/rules' },
-      { label: 'Jurisdictions', href: '/dashboard/jurisdictions' },
-      { label: 'Regulators', href: '/dashboard/regulators' },
-      { label: 'Templates', href: '/dashboard/templates' },
-    ],
-  },
-  {
-    title: 'Customers & Exposure',
-    items: [
-      { label: 'Contracts', href: '/dashboard/contracts' },
-      { label: 'Affected Populations', href: '/dashboard/populations' },
-      { label: 'Exposure Profile', href: '/dashboard/exposure' },
-    ],
-  },
-  {
-    title: 'Records & Insight',
-    items: [
-      { label: 'Defensibility Packs', href: '/dashboard/packs' },
-      { label: 'Analytics', href: '/dashboard/analytics' },
-      { label: 'Activity Log', href: '/dashboard/activity' },
-      { label: 'Saved Views', href: '/dashboard/views' },
-    ],
-  },
-  {
-    title: 'Account',
-    items: [{ label: 'Settings', href: '/dashboard/settings' }],
-  },
+const RAIL: { label: string; href: string; glyph: string }[] = [
+  { label: 'Dashboard', href: '/dashboard', glyph: 'D' },
+  { label: 'Incidents', href: '/dashboard/incidents', glyph: 'I' },
+  { label: 'My Tasks', href: '/dashboard/tasks', glyph: 'T' },
+  { label: 'Notifications', href: '/dashboard/notifications', glyph: 'N' },
+  { label: 'Rules', href: '/dashboard/rules', glyph: 'R' },
+  { label: 'Contracts', href: '/dashboard/contracts', glyph: 'C' },
+  { label: 'Defensibility Packs', href: '/dashboard/packs', glyph: 'P' },
+  { label: 'Analytics', href: '/dashboard/analytics', glyph: 'A' },
+  { label: 'Settings', href: '/dashboard/settings', glyph: 'S' },
 ]
 
 function isActive(pathname: string, href: string): boolean {
@@ -68,7 +47,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const router = useRouter()
   const [checking, setChecking] = useState(true)
   const [workspace, setWorkspace] = useState<string>('')
-  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [paletteOpen, setPaletteOpen] = useState(false)
 
   useEffect(() => {
     let cancelled = false
@@ -86,7 +65,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     return () => { cancelled = true }
   }, [router])
 
-  useEffect(() => { setDrawerOpen(false) }, [pathname])
+  const closePalette = useCallback(() => setPaletteOpen(false), [])
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault()
+        setPaletteOpen((v) => !v)
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
 
   const signOut = async () => {
     await authClient.signOut()
@@ -95,83 +85,64 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   if (checking) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-zinc-950">
-        <div className="flex items-center gap-2 text-zinc-400">
-          <span className="h-4 w-4 animate-spin rounded-full border-2 border-zinc-700 border-t-red-500" />
+      <div className="flex min-h-screen items-center justify-center bg-neutral-950">
+        <div className="flex items-center gap-2 text-neutral-400">
+          <span className="h-4 w-4 animate-spin rounded-full border-2 border-neutral-700 border-t-sky-500" />
           <span className="text-sm">Verifying session...</span>
         </div>
       </div>
     )
   }
 
-  const sidebar = (
-    <nav className="flex h-full flex-col gap-6 overflow-y-auto px-3 py-5">
-      <Link href="/dashboard" className="flex items-center gap-2 px-2">
-        <span className="flex h-7 w-7 items-center justify-center rounded-md bg-red-600 text-sm font-black text-white">B</span>
-        <span className="text-sm font-bold tracking-tight text-zinc-100">BreachNotificationClock</span>
-      </Link>
-      <div className="flex flex-col gap-5">
-        {SECTIONS.map((section) => (
-          <div key={section.title}>
-            <div className="px-2 pb-1.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-600">{section.title}</div>
-            <div className="flex flex-col gap-0.5">
-              {section.items.map((item) => {
-                const active = isActive(pathname, item.href)
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`rounded-md px-3 py-1.5 text-sm transition-colors ${
-                      active
-                        ? 'bg-red-600/15 font-medium text-red-300'
-                        : 'text-zinc-400 hover:bg-zinc-800/60 hover:text-zinc-100'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                )
-              })}
-            </div>
-          </div>
-        ))}
-      </div>
-    </nav>
-  )
-
   return (
-    <div className="flex min-h-screen bg-zinc-950">
-      <aside className="hidden w-64 shrink-0 border-r border-zinc-800 bg-zinc-950 lg:block">
-        {sidebar}
+    <div className="flex min-h-screen bg-neutral-950">
+      <aside className="hidden w-14 shrink-0 flex-col items-center gap-1 border-r border-neutral-800 bg-neutral-950 py-4 lg:flex">
+        <Link href="/dashboard" className="mb-3 flex h-8 w-8 items-center justify-center rounded-md bg-sky-600 text-sm font-black text-white">
+          B
+        </Link>
+        {RAIL.map((item) => {
+          const active = isActive(pathname, item.href)
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              title={item.label}
+              className={`flex h-9 w-9 items-center justify-center rounded-md text-xs font-semibold transition-colors ${
+                active ? 'bg-sky-600/15 text-sky-300' : 'text-neutral-500 hover:bg-neutral-800/60 hover:text-neutral-100'
+              }`}
+            >
+              {item.glyph}
+            </Link>
+          )
+        })}
       </aside>
 
-      {drawerOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
-          <div className="absolute inset-0 bg-black/70" onClick={() => setDrawerOpen(false)} aria-hidden />
-          <aside className="absolute left-0 top-0 h-full w-64 border-r border-zinc-800 bg-zinc-950">{sidebar}</aside>
-        </div>
-      )}
-
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-30 flex items-center justify-between border-b border-zinc-800 bg-zinc-950/90 px-4 py-3 backdrop-blur">
+        <header className="sticky top-0 z-30 flex items-center justify-between border-b border-neutral-800 bg-neutral-950/90 px-4 py-3 backdrop-blur">
           <div className="flex items-center gap-3">
+            <span className="flex h-7 w-7 items-center justify-center rounded-md bg-sky-600 text-sm font-black text-white lg:hidden">B</span>
             <button
-              className="rounded-md p-1.5 text-zinc-400 hover:bg-zinc-800 hover:text-white lg:hidden"
-              onClick={() => setDrawerOpen(true)}
-              aria-label="Open menu"
+              onClick={() => setPaletteOpen(true)}
+              className="flex items-center gap-2 rounded-md border border-neutral-800 bg-neutral-900 px-3 py-1.5 text-xs text-neutral-400 hover:border-neutral-700 hover:text-neutral-200"
             >
-              ☰
+              <span>Jump to...</span>
+              <span className="rounded border border-neutral-700 px-1.5 py-0.5 text-[10px] text-neutral-500">⌘K</span>
             </button>
-            <span className="text-sm font-medium text-zinc-300">{workspace}</span>
           </div>
-          <button
-            onClick={signOut}
-            className="rounded-md border border-zinc-700 px-3 py-1.5 text-xs font-medium text-zinc-300 hover:bg-zinc-800 hover:text-white"
-          >
-            Sign out
-          </button>
+          <div className="flex items-center gap-3">
+            <span className="hidden text-sm font-medium text-neutral-300 sm:inline">{workspace}</span>
+            <button
+              onClick={signOut}
+              className="rounded-md border border-neutral-700 px-3 py-1.5 text-xs font-medium text-neutral-300 hover:bg-neutral-800 hover:text-white"
+            >
+              Sign out
+            </button>
+          </div>
         </header>
         <main className="min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-8">{children}</main>
       </div>
+
+      <CommandPalette routes={ROUTES} open={paletteOpen} onClose={closePalette} />
     </div>
   )
 }

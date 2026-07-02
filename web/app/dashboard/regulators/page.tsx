@@ -173,8 +173,8 @@ export default function RegulatorsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-zinc-100">Regulator Directory</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-2xl font-bold text-neutral-100">Regulator Directory</h1>
+          <p className="mt-1 text-sm text-neutral-500">
             Supervisory authorities and their submission channels for breach notices.
           </p>
         </div>
@@ -196,18 +196,18 @@ export default function RegulatorsPage() {
 
       <Card>
         <CardHeader className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="text-sm font-semibold text-zinc-200">All regulators</h2>
+          <h2 className="text-sm font-semibold text-neutral-200">All regulators</h2>
           <div className="flex flex-wrap items-center gap-2">
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search name, email, jurisdiction..."
-              className="w-60 rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+              className="w-60 rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-1.5 text-sm text-neutral-200 placeholder:text-neutral-600 focus:border-red-600 focus:outline-none"
             />
             <select
               value={jurisdictionFilter}
               onChange={(e) => setJurisdictionFilter(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+              className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-1.5 text-sm text-neutral-200 focus:border-red-600 focus:outline-none"
             >
               <option value="all">All jurisdictions</option>
               {jurisdictions.map((j) => (
@@ -250,22 +250,22 @@ export default function RegulatorsPage() {
                   const j = jMap.get(r.jurisdiction_id)
                   return (
                     <TR key={r.id}>
-                      <TD className="font-medium text-zinc-100">{r.name}</TD>
+                      <TD className="font-medium text-neutral-100">{r.name}</TD>
                       <TD>
                         {j ? (
                           <span className="inline-flex items-center gap-1.5">
                             <span className="font-mono text-xs text-red-300">{j.code}</span>
-                            <span className="text-zinc-400">{j.name}</span>
+                            <span className="text-neutral-400">{j.name}</span>
                           </span>
                         ) : (
-                          <span className="text-zinc-600">—</span>
+                          <span className="text-neutral-600">—</span>
                         )}
                       </TD>
                       <TD>
                         {r.submission_method ? (
                           <Badge tone="blue">{r.submission_method}</Badge>
                         ) : (
-                          <span className="text-zinc-600">—</span>
+                          <span className="text-neutral-600">—</span>
                         )}
                       </TD>
                       <TD>
@@ -277,7 +277,7 @@ export default function RegulatorsPage() {
                             {r.contact_email}
                           </a>
                         ) : (
-                          <span className="text-zinc-600">—</span>
+                          <span className="text-neutral-600">—</span>
                         )}
                       </TD>
                       <TD>
@@ -291,7 +291,7 @@ export default function RegulatorsPage() {
                             Open
                           </a>
                         ) : (
-                          <span className="text-zinc-600">—</span>
+                          <span className="text-neutral-600">—</span>
                         )}
                       </TD>
                       <TD className="text-right">
@@ -339,14 +339,14 @@ export default function RegulatorsPage() {
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
               placeholder="e.g. Information Commissioner's Office"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 placeholder:text-neutral-600 focus:border-red-600 focus:outline-none"
             />
           </Field>
           <Field label="Jurisdiction">
             <select
               value={form.jurisdiction_id}
               onChange={(e) => setForm((f) => ({ ...f, jurisdiction_id: e.target.value }))}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-600 focus:outline-none"
             >
               <option value="">Select jurisdiction...</option>
               {jurisdictions.map((j) => (
@@ -360,7 +360,7 @@ export default function RegulatorsPage() {
             <select
               value={form.submission_method}
               onChange={(e) => setForm((f) => ({ ...f, submission_method: e.target.value }))}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-600 focus:outline-none"
             >
               {SUBMISSION_METHODS.map((m) => (
                 <option key={m} value={m}>
@@ -374,7 +374,7 @@ export default function RegulatorsPage() {
               value={form.portal_url}
               onChange={(e) => setForm((f) => ({ ...f, portal_url: e.target.value }))}
               placeholder="https://..."
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 placeholder:text-neutral-600 focus:border-red-600 focus:outline-none"
             />
           </Field>
           <Field label="Contact email">
@@ -383,7 +383,7 @@ export default function RegulatorsPage() {
               value={form.contact_email}
               onChange={(e) => setForm((f) => ({ ...f, contact_email: e.target.value }))}
               placeholder="breach@regulator.example"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 placeholder:text-neutral-600 focus:border-red-600 focus:outline-none"
             />
           </Field>
         </div>
@@ -404,8 +404,8 @@ export default function RegulatorsPage() {
           </>
         }
       >
-        <p className="text-sm text-zinc-300">
-          Delete regulator <span className="font-semibold text-zinc-100">{confirmDelete?.name}</span>? This
+        <p className="text-sm text-neutral-300">
+          Delete regulator <span className="font-semibold text-neutral-100">{confirmDelete?.name}</span>? This
           cannot be undone.
         </p>
       </Modal>
@@ -416,7 +416,7 @@ export default function RegulatorsPage() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-zinc-500">{label}</span>
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-neutral-500">{label}</span>
       {children}
     </label>
   )

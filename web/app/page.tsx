@@ -3,91 +3,91 @@ import Link from 'next/link'
 const FEATURES = [
   {
     title: 'Deterministic obligation engine',
-    body: 'Evaluate one incident timeline against a maintained corpus of GDPR Article 33/34, all 50 US state laws, HIPAA, GLBA, and sector rules. Every triggered obligation comes with a computed deadline and a "why triggered" trace.',
+    body: 'One incident timeline in. Every triggered obligation out, checked against GDPR Article 33/34, all 50 US states, HIPAA, GLBA, and sector rules. Computed deadline, and why it triggered.',
   },
   {
     title: 'Obligation matrix, sorted by soonest',
-    body: 'A live table of every regulator and customer notice ranked by time remaining, with red/amber/green banding, filters, group-by, and bulk owner and status edits.',
+    body: 'Every regulator and customer notice, ranked by time left. Red, amber, green. Filter it, group it, bulk-edit it.',
   },
   {
     title: 'Countdown war room',
-    body: 'A full-screen countdown wall with a next-deadline hero card, configurable urgency thresholds, and per-jurisdiction sub-team views for live incident command.',
+    body: 'Full-screen countdown wall. Next deadline front and center. Per-jurisdiction views for live incident command.',
   },
   {
     title: 'Notice tracker to verified delivery',
-    body: 'Drive each notice from draft, through approver sign-off, to recorded proof of delivery. The clock is only met when delivery is verified against the deadline.',
+    body: 'Draft. Sign-off. Send. Proof of delivery. The clock isn\'t met until delivery is verified against the deadline.',
   },
   {
     title: 'Contractual DPA overlay',
-    body: 'Register customer Data Processing Agreement windows and surface the tighter of the statutory or contractual deadline for every affected customer.',
+    body: 'Register customer DPA windows. We surface whichever deadline is tighter, statutory or contractual.',
   },
   {
     title: 'Immutable defensibility pack',
-    body: 'Generate a content-hashed, append-only export of the timeline, obligations, every artifact version, sign-off, and proof of delivery for regulators, auditors, and litigation hold.',
+    body: 'One export. Content-hashed, append-only. Timeline, obligations, artifacts, sign-offs, delivery proof. For regulators, auditors, litigation.',
   },
   {
     title: 'Drill mode and templates',
-    body: 'Run breach-readiness drills flagged out of real metrics, seed realistic sample incidents, and maintain a reusable per-jurisdiction notice template library.',
+    body: 'Run readiness drills before you need them. Seed sample incidents. Keep a template library per jurisdiction.',
   },
   {
     title: 'Affected population thresholds',
-    body: 'Per-jurisdiction resident counts and data-category breakdowns drive substitute-notice and attorney-general thresholds, so obligations trigger on the real numbers.',
+    body: 'Real resident counts, real data categories. Substitute-notice and attorney-general thresholds trigger on the actual numbers.',
   },
 ]
 
 const PROBLEMS = [
-  'Dozens of overlapping laws, each with its own trigger, clock anchor, and deadline unit.',
-  'Customer DPAs that demand notice in 24 to 48 hours, well inside any statutory window.',
-  'Drafting, routing for sign-off, sending, and proving delivery of every individual notice.',
-  'Producing an after-the-fact record that proves every clock was met and cannot be altered.',
+  'Dozens of overlapping laws. Each one with its own trigger, clock anchor, deadline unit.',
+  'Customer DPAs demanding notice in 24 to 48 hours. Inside every statutory window.',
+  'Drafting, routing, sending, and proving delivery for every single notice, by hand.',
+  'No record that proves every clock was met, after the fact, unaltered.',
 ]
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-zinc-950 text-zinc-100">
-      <nav className="border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
+    <main className="min-h-screen bg-neutral-950 text-neutral-100">
+      <nav className="border-b border-neutral-800 px-6 py-4 flex items-center justify-between">
         <span className="flex items-center gap-2">
-          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-red-600 text-sm font-black text-white">B</span>
+          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-sky-600 text-sm font-black text-white">B</span>
           <span className="text-lg font-black tracking-tight">BreachNotificationClock</span>
         </span>
         <div className="flex items-center gap-4 text-sm">
-          <Link href="/pricing" className="text-zinc-300 hover:text-white">Pricing</Link>
-          <Link href="/auth/sign-in" className="text-zinc-300 hover:text-white">Sign In</Link>
-          <Link href="/auth/sign-up" className="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-lg font-medium">Get Started</Link>
+          <Link href="/pricing" className="text-neutral-300 hover:text-white">Pricing</Link>
+          <Link href="/auth/sign-in" className="text-neutral-300 hover:text-white">Sign In</Link>
+          <Link href="/auth/sign-up" className="bg-sky-600 hover:bg-sky-500 text-white px-4 py-2 rounded-lg font-medium">Get Started</Link>
         </div>
       </nav>
 
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(220,38,38,0.18),_transparent_60%)]" aria-hidden />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(14,165,233,0.18),_transparent_60%)]" aria-hidden />
         <div className="relative max-w-4xl mx-auto px-6 py-28 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-red-800 bg-red-950/40 px-3 py-1 text-xs font-medium text-red-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" /> The clock starts at discovery
+          <span className="inline-flex items-center gap-2 rounded-full border border-sky-800 bg-sky-950/40 px-3 py-1 text-xs font-medium text-sky-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-sky-500 animate-pulse" /> The clock starts at discovery
           </span>
           <h1 className="mt-6 text-4xl sm:text-6xl font-black tracking-tight">
-            Every breach deadline, <span className="text-red-500">computed and counting down.</span>
+            72 hours. That&apos;s it. <span className="text-sky-500">Don&apos;t miss it.</span>
           </h1>
-          <p className="mt-6 text-lg text-zinc-400 max-w-2xl mx-auto">
-            BreachNotificationClock turns one incident timeline into the full obligation matrix across every jurisdiction and contract you are exposed to, then tracks each notice from draft to verified delivery with an immutable audit trail.
+          <p className="mt-6 text-lg text-neutral-400 max-w-2xl mx-auto">
+            One incident, dozens of clocks. BreachNotificationClock computes every regulator and customer deadline the second you log the timeline, then tracks each notice to verified delivery. No spreadsheets. No guessing. No missed clocks.
           </p>
           <div className="mt-9 flex items-center justify-center gap-3">
-            <Link href="/auth/sign-up" className="bg-red-600 hover:bg-red-500 text-white px-6 py-3 rounded-lg font-semibold">Start the clock</Link>
-            <Link href="/auth/sign-in" className="border border-zinc-700 hover:bg-zinc-800 text-zinc-200 px-6 py-3 rounded-lg font-semibold">Sign in</Link>
+            <Link href="/auth/sign-up" className="bg-sky-600 hover:bg-sky-500 text-white px-6 py-3 rounded-lg font-semibold">Start the clock</Link>
+            <Link href="/auth/sign-in" className="border border-neutral-700 hover:bg-neutral-800 text-neutral-200 px-6 py-3 rounded-lg font-semibold">Sign in</Link>
           </div>
-          <p className="mt-4 text-xs text-zinc-600">Free while in beta. No credit card.</p>
+          <p className="mt-4 text-xs text-neutral-600">Free while in beta. No credit card.</p>
         </div>
       </section>
 
-      <section className="border-t border-zinc-800 bg-zinc-900/30">
+      <section className="border-t border-neutral-800 bg-neutral-900/30">
         <div className="max-w-5xl mx-auto px-6 py-20">
-          <h2 className="text-2xl font-bold text-center">During a live incident, the scramble is the risk</h2>
-          <p className="mt-2 text-center text-zinc-500 max-w-2xl mx-auto">
-            A single missed clock means GDPR fines up to 4% of global turnover, US attorney-general penalties, consent decrees, and contract breach. Spreadsheets and email threads neither compute deadlines deterministically nor prove delivery.
+          <h2 className="text-2xl font-bold text-center">Miss one clock, pay for all of them</h2>
+          <p className="mt-2 text-center text-neutral-500 max-w-2xl mx-auto">
+            GDPR fines run up to 4% of global turnover. State AGs pile on. Contracts get breached. Spreadsheets don&apos;t compute deadlines and they don&apos;t prove delivery. Here&apos;s what you&apos;re actually up against:
           </p>
           <ul className="mt-10 grid gap-4 sm:grid-cols-2">
             {PROBLEMS.map((p) => (
-              <li key={p} className="flex gap-3 rounded-xl border border-zinc-800 bg-zinc-900 p-5">
-                <span className="mt-0.5 text-red-500">▣</span>
-                <span className="text-sm text-zinc-300">{p}</span>
+              <li key={p} className="flex gap-3 rounded-xl border border-neutral-800 bg-neutral-900 p-5">
+                <span className="mt-0.5 text-sky-500">▣</span>
+                <span className="text-sm text-neutral-300">{p}</span>
               </li>
             ))}
           </ul>
@@ -95,36 +95,36 @@ export default function Home() {
       </section>
 
       <section className="max-w-6xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold text-center">From chaos to a deterministic, defensible workflow</h2>
-        <p className="mt-3 text-center text-zinc-500 max-w-2xl mx-auto">
-          Built on a maintained breach-notification rules dataset where each rule encodes its trigger, clock anchor, deadline offset, recipient, content requirements, and delivery method.
+        <h2 className="text-3xl font-bold text-center">Every clock, computed. Every notice, tracked.</h2>
+        <p className="mt-3 text-center text-neutral-500 max-w-2xl mx-auto">
+          One rules dataset. Every trigger, every clock anchor, every deadline offset, every recipient. No manual lookups.
         </p>
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((f) => (
-            <div key={f.title} className="rounded-xl border border-zinc-800 bg-zinc-900 p-6 hover:border-red-900/60 transition-colors">
-              <h3 className="text-base font-semibold text-zinc-100">{f.title}</h3>
-              <p className="mt-2 text-sm text-zinc-400 leading-relaxed">{f.body}</p>
+            <div key={f.title} className="rounded-xl border border-neutral-800 bg-neutral-900 p-6 hover:border-sky-900/60 transition-colors">
+              <h3 className="text-base font-semibold text-neutral-100">{f.title}</h3>
+              <p className="mt-2 text-sm text-neutral-400 leading-relaxed">{f.body}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="border-t border-zinc-800">
+      <section className="border-t border-neutral-800">
         <div className="max-w-3xl mx-auto px-6 py-24 text-center">
-          <h2 className="text-3xl font-bold">Be ready before the next incident, not during it.</h2>
-          <p className="mt-3 text-zinc-400">
-            Run a drill today. Map your jurisdictions and contracts. When a real breach hits, the matrix is already waiting.
+          <h2 className="text-3xl font-bold">Get ready now. Not mid-incident.</h2>
+          <p className="mt-3 text-neutral-400">
+            Run a drill today. Map your jurisdictions and contracts today. When the real thing hits, the matrix is already built and the clock is already running.
           </p>
           <div className="mt-8 flex items-center justify-center gap-3">
-            <Link href="/auth/sign-up" className="bg-red-600 hover:bg-red-500 text-white px-6 py-3 rounded-lg font-semibold">Get started free</Link>
-            <Link href="/pricing" className="border border-zinc-700 hover:bg-zinc-800 text-zinc-200 px-6 py-3 rounded-lg font-semibold">See pricing</Link>
+            <Link href="/auth/sign-up" className="bg-sky-600 hover:bg-sky-500 text-white px-6 py-3 rounded-lg font-semibold">Get started free</Link>
+            <Link href="/pricing" className="border border-neutral-700 hover:bg-neutral-800 text-neutral-200 px-6 py-3 rounded-lg font-semibold">See pricing</Link>
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-zinc-800 py-10 text-center text-zinc-600">
+      <footer className="border-t border-neutral-800 py-10 text-center text-neutral-600">
         <p className="text-sm">BreachNotificationClock</p>
-        <p className="mt-1 text-xs">Statutory and contractual breach-notification deadline engine and notice tracker.</p>
+        <p className="mt-1 text-xs">Deadlines computed. Notices tracked. Proof kept.</p>
       </footer>
     </main>
   )

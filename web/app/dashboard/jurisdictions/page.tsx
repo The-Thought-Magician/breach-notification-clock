@@ -104,8 +104,8 @@ export default function JurisdictionsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-zinc-100">Jurisdiction Registry</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-2xl font-bold text-neutral-100">Jurisdiction Registry</h1>
+          <p className="mt-1 text-sm text-neutral-500">
             Statutory breach-notification jurisdictions that drive obligation deadlines.
           </p>
         </div>
@@ -130,18 +130,18 @@ export default function JurisdictionsPage() {
       <div className="grid gap-6 lg:grid-cols-3">
         <Card className="lg:col-span-2">
           <CardHeader className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="text-sm font-semibold text-zinc-200">Jurisdictions</h2>
+            <h2 className="text-sm font-semibold text-neutral-200">Jurisdictions</h2>
             <div className="flex flex-wrap items-center gap-2">
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search code, name, sector..."
-                className="w-56 rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+                className="w-56 rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-1.5 text-sm text-neutral-200 placeholder:text-neutral-600 focus:border-red-600 focus:outline-none"
               />
               <select
                 value={regionFilter}
                 onChange={(e) => setRegionFilter(e.target.value)}
-                className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+                className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-1.5 text-sm text-neutral-200 focus:border-red-600 focus:outline-none"
               >
                 <option value="all">All regions</option>
                 {regions.map((r) => (
@@ -181,15 +181,15 @@ export default function JurisdictionsPage() {
                       <TD>
                         <span className="font-mono text-xs font-semibold text-red-300">{j.code}</span>
                       </TD>
-                      <TD className="font-medium text-zinc-100">{j.name}</TD>
+                      <TD className="font-medium text-neutral-100">{j.name}</TD>
                       <TD>
-                        {j.region ? <Badge tone="blue">{j.region}</Badge> : <span className="text-zinc-600">—</span>}
+                        {j.region ? <Badge tone="blue">{j.region}</Badge> : <span className="text-neutral-600">—</span>}
                       </TD>
                       <TD>
                         {j.sector ? (
                           <Badge tone="zinc">{j.sector}</Badge>
                         ) : (
-                          <span className="text-zinc-600">General</span>
+                          <span className="text-neutral-600">General</span>
                         )}
                       </TD>
                       <TD className="text-right">
@@ -214,20 +214,20 @@ export default function JurisdictionsPage() {
 
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-zinc-200">Coverage by region</h2>
+            <h2 className="text-sm font-semibold text-neutral-200">Coverage by region</h2>
           </CardHeader>
           <CardBody>
             {byRegion.length === 0 ? (
-              <p className="text-sm text-zinc-500">No region data.</p>
+              <p className="text-sm text-neutral-500">No region data.</p>
             ) : (
               <div className="space-y-3">
                 {byRegion.map(([region, count]) => (
                   <div key={region}>
                     <div className="mb-1 flex items-center justify-between text-xs">
-                      <span className="text-zinc-300">{region}</span>
-                      <span className="font-mono tabular-nums text-zinc-500">{count}</span>
+                      <span className="text-neutral-300">{region}</span>
+                      <span className="font-mono tabular-nums text-neutral-500">{count}</span>
                     </div>
-                    <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-800">
+                    <div className="h-2 w-full overflow-hidden rounded-full bg-neutral-800">
                       <div
                         className="h-full rounded-full bg-red-600"
                         style={{ width: `${maxRegion ? (count / maxRegion) * 100 : 0}%` }}
@@ -292,9 +292,9 @@ export default function JurisdictionsPage() {
 
 function Field({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
   return (
-    <div className="rounded-lg border border-zinc-800 bg-zinc-950/60 px-3 py-2">
-      <dt className="text-xs uppercase tracking-wide text-zinc-500">{label}</dt>
-      <dd className={`mt-0.5 text-sm text-zinc-200 ${mono ? 'font-mono' : ''}`}>{value}</dd>
+    <div className="rounded-lg border border-neutral-800 bg-neutral-950/60 px-3 py-2">
+      <dt className="text-xs uppercase tracking-wide text-neutral-500">{label}</dt>
+      <dd className={`mt-0.5 text-sm text-neutral-200 ${mono ? 'font-mono' : ''}`}>{value}</dd>
     </div>
   )
 }

@@ -172,8 +172,8 @@ export default function ActivityPage() {
       <header className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-red-500">Activity Log</p>
-          <h1 className="mt-1 text-2xl font-bold text-zinc-100">Audit trail</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="mt-1 text-2xl font-bold text-neutral-100">Audit trail</h1>
+          <p className="mt-1 text-sm text-neutral-500">
             Append-only record of every change across your incidents. Defensible evidence of who did what,
             when.
           </p>
@@ -194,11 +194,11 @@ export default function ActivityPage() {
           <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 lg:flex lg:flex-row">
               <label className="flex flex-col gap-1">
-                <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Incident</span>
+                <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Incident</span>
                 <select
                   value={incidentFilter}
                   onChange={(e) => setIncidentFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 lg:w-52"
+                  className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 lg:w-52"
                 >
                   <option value="">All incidents</option>
                   {incidents.map((i) => (
@@ -210,11 +210,11 @@ export default function ActivityPage() {
                 </select>
               </label>
               <label className="flex flex-col gap-1">
-                <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Entity</span>
+                <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Entity</span>
                 <select
                   value={entityFilter}
                   onChange={(e) => setEntityFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 lg:w-44"
+                  className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 lg:w-44"
                 >
                   <option value="">All types</option>
                   {entityTypes.map((t) => (
@@ -225,11 +225,11 @@ export default function ActivityPage() {
                 </select>
               </label>
               <label className="flex flex-col gap-1">
-                <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Action</span>
+                <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Action</span>
                 <select
                   value={actionFilter}
                   onChange={(e) => setActionFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 lg:w-44"
+                  className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 lg:w-44"
                 >
                   <option value="">All actions</option>
                   {actions.map((a) => (
@@ -245,7 +245,7 @@ export default function ActivityPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search action, entity, actor..."
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 lg:w-64"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 lg:w-64"
               />
               {hasFilters && (
                 <Button variant="ghost" onClick={clearFilters}>
@@ -300,25 +300,25 @@ export default function ActivityPage() {
                 {filtered.map((a) => (
                   <TR key={a.id}>
                     <TD>
-                      <div className="whitespace-nowrap text-sm text-zinc-200">{relTime(a.created_at)}</div>
-                      <div className="whitespace-nowrap text-xs text-zinc-500">{fmtDateTime(a.created_at)}</div>
+                      <div className="whitespace-nowrap text-sm text-neutral-200">{relTime(a.created_at)}</div>
+                      <div className="whitespace-nowrap text-xs text-neutral-500">{fmtDateTime(a.created_at)}</div>
                     </TD>
                     <TD>
                       <Badge tone={actionTone(a.action)}>{a.action}</Badge>
                     </TD>
                     <TD>
-                      <div className="text-sm text-zinc-200">{a.entity_type}</div>
-                      <div className="font-mono text-xs text-zinc-600">{actorShort(a.entity_id)}</div>
+                      <div className="text-sm text-neutral-200">{a.entity_type}</div>
+                      <div className="font-mono text-xs text-neutral-600">{actorShort(a.entity_id)}</div>
                     </TD>
                     <TD className="hidden md:table-cell">
                       {a.incident_id ? (
-                        <span className="text-sm text-zinc-300">{incidentTitle(a.incident_id)}</span>
+                        <span className="text-sm text-neutral-300">{incidentTitle(a.incident_id)}</span>
                       ) : (
-                        <span className="text-xs text-zinc-600">global</span>
+                        <span className="text-xs text-neutral-600">global</span>
                       )}
                     </TD>
                     <TD className="hidden lg:table-cell">
-                      <span className="font-mono text-xs text-zinc-400">{actorShort(a.actor_id)}</span>
+                      <span className="font-mono text-xs text-neutral-400">{actorShort(a.actor_id)}</span>
                     </TD>
                     <TD className="text-right">
                       <Button size="sm" variant="ghost" onClick={() => setDetail(a)}>
@@ -342,24 +342,24 @@ export default function ActivityPage() {
           <div className="space-y-4 text-sm">
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <div className="text-xs font-medium uppercase tracking-wide text-zinc-500">When</div>
-                <div className="mt-0.5 text-zinc-200">{fmtDateTime(detail.created_at)}</div>
+                <div className="text-xs font-medium uppercase tracking-wide text-neutral-500">When</div>
+                <div className="mt-0.5 text-neutral-200">{fmtDateTime(detail.created_at)}</div>
               </div>
               <div>
-                <div className="text-xs font-medium uppercase tracking-wide text-zinc-500">Actor</div>
-                <div className="mt-0.5 break-all font-mono text-xs text-zinc-300">{detail.actor_id}</div>
+                <div className="text-xs font-medium uppercase tracking-wide text-neutral-500">Actor</div>
+                <div className="mt-0.5 break-all font-mono text-xs text-neutral-300">{detail.actor_id}</div>
               </div>
               <div>
-                <div className="text-xs font-medium uppercase tracking-wide text-zinc-500">Entity type</div>
-                <div className="mt-0.5 text-zinc-200">{detail.entity_type}</div>
+                <div className="text-xs font-medium uppercase tracking-wide text-neutral-500">Entity type</div>
+                <div className="mt-0.5 text-neutral-200">{detail.entity_type}</div>
               </div>
               <div>
-                <div className="text-xs font-medium uppercase tracking-wide text-zinc-500">Entity id</div>
-                <div className="mt-0.5 break-all font-mono text-xs text-zinc-300">{detail.entity_id}</div>
+                <div className="text-xs font-medium uppercase tracking-wide text-neutral-500">Entity id</div>
+                <div className="mt-0.5 break-all font-mono text-xs text-neutral-300">{detail.entity_id}</div>
               </div>
               <div className="col-span-2">
-                <div className="text-xs font-medium uppercase tracking-wide text-zinc-500">Incident</div>
-                <div className="mt-0.5 text-zinc-200">
+                <div className="text-xs font-medium uppercase tracking-wide text-neutral-500">Incident</div>
+                <div className="mt-0.5 text-neutral-200">
                   {detail.incident_id ? incidentTitle(detail.incident_id) : 'Global (no incident)'}
                 </div>
               </div>
@@ -367,16 +367,16 @@ export default function ActivityPage() {
 
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div>
-                <div className="mb-1 text-xs font-medium uppercase tracking-wide text-zinc-500">Before</div>
-                <pre className="max-h-48 overflow-auto rounded-lg border border-zinc-800 bg-zinc-950 p-3 text-xs text-zinc-400">
+                <div className="mb-1 text-xs font-medium uppercase tracking-wide text-neutral-500">Before</div>
+                <pre className="max-h-48 overflow-auto rounded-lg border border-neutral-800 bg-neutral-950 p-3 text-xs text-neutral-400">
                   {detail.before && Object.keys(detail.before).length > 0
                     ? JSON.stringify(detail.before, null, 2)
                     : '—'}
                 </pre>
               </div>
               <div>
-                <div className="mb-1 text-xs font-medium uppercase tracking-wide text-zinc-500">After</div>
-                <pre className="max-h-48 overflow-auto rounded-lg border border-zinc-800 bg-zinc-950 p-3 text-xs text-emerald-300/80">
+                <div className="mb-1 text-xs font-medium uppercase tracking-wide text-neutral-500">After</div>
+                <pre className="max-h-48 overflow-auto rounded-lg border border-neutral-800 bg-neutral-950 p-3 text-xs text-emerald-300/80">
                   {detail.after && Object.keys(detail.after).length > 0
                     ? JSON.stringify(detail.after, null, 2)
                     : '—'}

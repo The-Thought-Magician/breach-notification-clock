@@ -223,8 +223,8 @@ export default function ExposurePage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-zinc-100">Exposure Profile</h1>
-        <p className="mt-1 max-w-2xl text-sm text-zinc-500">
+        <h1 className="text-2xl font-bold text-neutral-100">Exposure Profile</h1>
+        <p className="mt-1 max-w-2xl text-sm text-neutral-500">
           Map where you hold personal data and what you process. Pre-stage templates and approvers
           so the breach clock never catches you flat-footed. Run an &quot;if breached&quot; preview to
           see the obligations you&apos;d face.
@@ -252,10 +252,10 @@ export default function ExposurePage() {
       {/* Profile form */}
       <Card>
         <CardHeader>
-          <h2 className="text-base font-semibold text-zinc-100">
+          <h2 className="text-base font-semibold text-neutral-100">
             {editing ? 'Edit exposure profile' : 'Add exposure profile'}
           </h2>
-          <p className="mt-0.5 text-xs text-zinc-500">
+          <p className="mt-0.5 text-xs text-neutral-500">
             Upsert is keyed on jurisdiction — re-saving an existing one updates it.
           </p>
         </CardHeader>
@@ -263,14 +263,14 @@ export default function ExposurePage() {
           <form onSubmit={saveProfile} className="space-y-4">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <label className="block">
-                <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">
+                <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">
                   Jurisdiction
                 </span>
                 <select
                   value={formCode}
                   onChange={(e) => setFormCode(e.target.value)}
                   disabled={!!editing}
-                  className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-600 focus:outline-none disabled:opacity-60"
+                  className="mt-1 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-600 focus:outline-none disabled:opacity-60"
                 >
                   <option value="">Select jurisdiction…</option>
                   {jurisdictions.map((j) => (
@@ -281,21 +281,21 @@ export default function ExposurePage() {
                 </select>
               </label>
               <div className="flex flex-col justify-end gap-2">
-                <label className="flex items-center gap-2 text-sm text-zinc-300">
+                <label className="flex items-center gap-2 text-sm text-neutral-300">
                   <input
                     type="checkbox"
                     checked={formTemplate}
                     onChange={(e) => setFormTemplate(e.target.checked)}
-                    className="h-4 w-4 rounded border-zinc-600 bg-zinc-950 accent-red-600"
+                    className="h-4 w-4 rounded border-neutral-600 bg-neutral-950 accent-red-600"
                   />
                   Notice template pre-drafted
                 </label>
-                <label className="flex items-center gap-2 text-sm text-zinc-300">
+                <label className="flex items-center gap-2 text-sm text-neutral-300">
                   <input
                     type="checkbox"
                     checked={formApprover}
                     onChange={(e) => setFormApprover(e.target.checked)}
-                    className="h-4 w-4 rounded border-zinc-600 bg-zinc-950 accent-red-600"
+                    className="h-4 w-4 rounded border-neutral-600 bg-neutral-950 accent-red-600"
                   />
                   Approver assigned
                 </label>
@@ -303,7 +303,7 @@ export default function ExposurePage() {
             </div>
 
             <div>
-              <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">
+              <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">
                 Data categories held
               </span>
               <div className="mt-2 flex flex-wrap gap-1.5">
@@ -317,7 +317,7 @@ export default function ExposurePage() {
                       className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
                         active
                           ? 'border-red-700 bg-red-950/60 text-red-300'
-                          : 'border-zinc-700 bg-zinc-900 text-zinc-400 hover:text-zinc-200'
+                          : 'border-neutral-700 bg-neutral-900 text-neutral-400 hover:text-neutral-200'
                       }`}
                     >
                       {cat.replace(/_/g, ' ')}
@@ -328,13 +328,13 @@ export default function ExposurePage() {
             </div>
 
             <label className="block">
-              <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Notes</span>
+              <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Notes</span>
               <textarea
                 value={formNotes}
                 onChange={(e) => setFormNotes(e.target.value)}
                 rows={2}
                 placeholder="Processing context, data residency, sub-processors…"
-                className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 placeholder-zinc-600 focus:border-red-600 focus:outline-none"
+                className="mt-1 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 placeholder-neutral-600 focus:border-red-600 focus:outline-none"
               />
             </label>
 
@@ -355,7 +355,7 @@ export default function ExposurePage() {
       {/* Profiles list */}
       <Card>
         <CardHeader>
-          <h2 className="text-base font-semibold text-zinc-100">Your exposure</h2>
+          <h2 className="text-base font-semibold text-neutral-100">Your exposure</h2>
         </CardHeader>
         <CardBody className="p-0">
           {profiles.length === 0 ? (
@@ -382,17 +382,17 @@ export default function ExposurePage() {
                   return (
                     <TR key={p.id}>
                       <TD>
-                        <div className="font-medium text-zinc-100">
+                        <div className="font-medium text-neutral-100">
                           {j?.name ?? p.jurisdiction_code}
                         </div>
-                        <div className="text-xs text-zinc-500">
+                        <div className="text-xs text-neutral-500">
                           {p.jurisdiction_code}
                           {j?.region ? ` · ${j.region}` : ''}
                         </div>
                       </TD>
                       <TD>
                         {(p.data_categories ?? []).length === 0 ? (
-                          <span className="text-xs text-zinc-600">none recorded</span>
+                          <span className="text-xs text-neutral-600">none recorded</span>
                         ) : (
                           <div className="flex flex-wrap gap-1">
                             {p.data_categories.map((c) => (
@@ -408,14 +408,14 @@ export default function ExposurePage() {
                           <Badge tone={tone}>
                             {tone === 'green' ? 'Ready' : tone === 'amber' ? 'Partial' : 'Not ready'}
                           </Badge>
-                          <span className="text-xs text-zinc-500">
+                          <span className="text-xs text-neutral-500">
                             {p.has_template ? '✓ template' : '✗ template'} ·{' '}
                             {p.has_approver ? '✓ approver' : '✗ approver'}
                           </span>
                         </div>
                       </TD>
                       <TD className="max-w-[16rem]">
-                        <span className="text-xs text-zinc-400">{p.notes || '—'}</span>
+                        <span className="text-xs text-neutral-400">{p.notes || '—'}</span>
                       </TD>
                       <TD className="text-right">
                         <div className="flex justify-end gap-1">
@@ -452,7 +452,7 @@ export default function ExposurePage() {
       <Card className="border-red-900/60">
         <CardHeader className="border-red-900/40">
           <h2 className="text-base font-semibold text-red-300">If breached — obligation preview</h2>
-          <p className="mt-0.5 text-xs text-zinc-500">
+          <p className="mt-0.5 text-xs text-neutral-500">
             Simulate a breach in a jurisdiction with given data categories and see the statutory
             clocks you would be on.
           </p>
@@ -461,13 +461,13 @@ export default function ExposurePage() {
           <form onSubmit={runPreview} className="space-y-4">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <label className="block">
-                <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">
+                <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">
                   Jurisdiction
                 </span>
                 <select
                   value={previewCode}
                   onChange={(e) => setPreviewCode(e.target.value)}
-                  className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+                  className="mt-1 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-600 focus:outline-none"
                 >
                   <option value="">Select jurisdiction…</option>
                   {jurisdictions.map((j) => (
@@ -484,7 +484,7 @@ export default function ExposurePage() {
               </div>
             </div>
             <div>
-              <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">
+              <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">
                 Data categories breached
               </span>
               <div className="mt-2 flex flex-wrap gap-1.5">
@@ -498,7 +498,7 @@ export default function ExposurePage() {
                       className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
                         active
                           ? 'border-red-700 bg-red-950/60 text-red-300'
-                          : 'border-zinc-700 bg-zinc-900 text-zinc-400 hover:text-zinc-200'
+                          : 'border-neutral-700 bg-neutral-900 text-neutral-400 hover:text-neutral-200'
                       }`}
                     >
                       {cat.replace(/_/g, ' ')}
@@ -524,7 +524,7 @@ export default function ExposurePage() {
               />
             ) : (
               <div className="space-y-3">
-                <div className="flex items-center gap-3 text-sm text-zinc-400">
+                <div className="flex items-center gap-3 text-sm text-neutral-400">
                   <Badge tone="red">{previews.length} obligation{previews.length === 1 ? '' : 's'}</Badge>
                   would be triggered.
                 </div>
@@ -542,21 +542,21 @@ export default function ExposurePage() {
                     {previews.map((p, i) => (
                       <TR key={i}>
                         <TD>
-                          <div className="font-medium text-zinc-100">
+                          <div className="font-medium text-neutral-100">
                             {p.recipient || p.recipient_type || '—'}
                           </div>
                           {p.recipient_type && p.recipient && (
-                            <div className="text-xs text-zinc-500">{p.recipient_type}</div>
+                            <div className="text-xs text-neutral-500">{p.recipient_type}</div>
                           )}
                         </TD>
                         <TD>
-                          <div className="text-zinc-200">{p.title || '—'}</div>
+                          <div className="text-neutral-200">{p.title || '—'}</div>
                           {p.citation && (
-                            <div className="text-xs text-zinc-500">{p.citation}</div>
+                            <div className="text-xs text-neutral-500">{p.citation}</div>
                           )}
                         </TD>
                         <TD>
-                          <span className="text-xs text-zinc-400">{p.clock_anchor || '—'}</span>
+                          <span className="text-xs text-neutral-400">{p.clock_anchor || '—'}</span>
                         </TD>
                         <TD>
                           {p.is_undue_delay ? (
@@ -566,11 +566,11 @@ export default function ExposurePage() {
                               {p.deadline_hours}h
                             </Badge>
                           ) : (
-                            <span className="text-xs text-zinc-600">—</span>
+                            <span className="text-xs text-neutral-600">—</span>
                           )}
                         </TD>
                         <TD className="max-w-[18rem]">
-                          <span className="text-xs text-zinc-400">{p.why_triggered || '—'}</span>
+                          <span className="text-xs text-neutral-400">{p.why_triggered || '—'}</span>
                         </TD>
                       </TR>
                     ))}

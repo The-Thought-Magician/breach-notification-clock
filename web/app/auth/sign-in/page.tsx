@@ -21,31 +21,31 @@ export default function SignIn() {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-950 flex items-center justify-center px-4">
+    <main className="min-h-screen bg-neutral-950 flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-md bg-red-600 text-base font-black text-white">B</span>
-            <span className="text-xl font-black tracking-tight text-zinc-100">BreachNotificationClock</span>
+            <span className="flex h-8 w-8 items-center justify-center rounded-md bg-sky-600 text-base font-black text-white">B</span>
+            <span className="text-xl font-black tracking-tight text-neutral-100">BreachNotificationClock</span>
           </Link>
-          <h1 className="text-2xl font-bold mt-5 text-zinc-100">Sign in to your account</h1>
-          <p className="mt-1 text-sm text-zinc-500">The clock does not wait. Get back to your incidents.</p>
+          <h1 className="text-2xl font-bold mt-5 text-neutral-100">Sign in to your account</h1>
+          <p className="mt-1 text-sm text-neutral-500">The clock does not wait. Get back to your incidents.</p>
         </div>
-        <form onSubmit={handleSubmit} className="bg-zinc-900 rounded-xl border border-zinc-800 p-8 space-y-4">
+        <form onSubmit={handleSubmit} className="bg-neutral-900 rounded-xl border border-neutral-800 p-8 space-y-4">
           {error && <div className="bg-red-950/40 border border-red-800 text-red-300 rounded-lg p-3 text-sm">{error}</div>}
           <div>
-            <label className="block text-sm font-medium text-zinc-300 mb-1">Email</label>
-            <input name="email" type="email" required className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500" placeholder="you@example.com" />
+            <label className="block text-sm font-medium text-neutral-300 mb-1">Email</label>
+            <input name="email" type="email" required className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500" placeholder="you@example.com" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-zinc-300 mb-1">Password</label>
-            <input name="password" type="password" required className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500" />
+            <label className="block text-sm font-medium text-neutral-300 mb-1">Password</label>
+            <input name="password" type="password" required className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500" />
           </div>
-          <button type="submit" disabled={loading} className="w-full bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white py-3 rounded-lg font-semibold transition-colors">
+          <button type="submit" disabled={loading} className="w-full bg-sky-600 hover:bg-sky-500 disabled:opacity-50 text-white py-3 rounded-lg font-semibold transition-colors">
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
-          <p className="text-center text-zinc-500 text-sm">
-            No account? <Link href="/auth/sign-up" className="text-red-400 hover:text-red-300">Sign up</Link>
+          <p className="text-center text-neutral-500 text-sm">
+            No account? <Link href="/auth/sign-up" className="text-sky-400 hover:text-sky-300">Sign up</Link>
           </p>
         </form>
       </div>

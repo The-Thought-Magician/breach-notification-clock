@@ -242,8 +242,8 @@ export default function RulesPage() {
       <header className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-red-500">Rules Library</p>
-          <h1 className="mt-1 text-2xl font-bold text-zinc-100">Notification rules</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="mt-1 text-2xl font-bold text-neutral-100">Notification rules</h1>
+          <p className="mt-1 text-sm text-neutral-500">
             Statutory and custom deadlines that the obligation engine evaluates against each incident's facts and
             affected populations.
           </p>
@@ -268,13 +268,13 @@ export default function RulesPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search title, citation, jurisdiction..."
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 lg:max-w-xs"
+            className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-1.5 text-sm text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 lg:max-w-xs"
           />
           <div className="flex flex-wrap gap-2">
             <select
               value={jurisdictionFilter}
               onChange={(e) => setJurisdictionFilter(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-1.5 text-sm text-neutral-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             >
               <option value="">All jurisdictions</option>
               {jurisdictionOptions.map((j) => (
@@ -286,7 +286,7 @@ export default function RulesPage() {
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-1.5 text-sm text-neutral-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             >
               <option value="">All categories</option>
               {CATEGORIES.map((c) => (
@@ -328,24 +328,24 @@ export default function RulesPage() {
                     <TD>
                       <button onClick={() => openDetail(r)} className="text-left">
                         <div className="flex items-center gap-2">
-                          <span className="font-medium text-zinc-100 hover:text-red-400">{r.title}</span>
+                          <span className="font-medium text-neutral-100 hover:text-red-400">{r.title}</span>
                           {isCustom(r) && <Badge tone="blue">custom</Badge>}
                         </div>
-                        {r.citation && <div className="text-xs text-zinc-500">{r.citation}</div>}
+                        {r.citation && <div className="text-xs text-neutral-500">{r.citation}</div>}
                       </button>
                     </TD>
                     <TD className="hidden md:table-cell">
                       {r.jurisdiction_code ? (
-                        <span className="font-mono text-sm text-zinc-300">{r.jurisdiction_code}</span>
+                        <span className="font-mono text-sm text-neutral-300">{r.jurisdiction_code}</span>
                       ) : (
-                        <span className="text-zinc-600">—</span>
+                        <span className="text-neutral-600">—</span>
                       )}
                     </TD>
-                    <TD className="hidden md:table-cell text-zinc-400">{r.recipient_type || '—'}</TD>
+                    <TD className="hidden md:table-cell text-neutral-400">{r.recipient_type || '—'}</TD>
                     <TD>
                       <Badge tone={deadlineTone(r)}>{fmtDeadline(r)}</Badge>
                     </TD>
-                    <TD className="hidden lg:table-cell text-zinc-400">{r.clock_anchor || '—'}</TD>
+                    <TD className="hidden lg:table-cell text-neutral-400">{r.clock_anchor || '—'}</TD>
                     <TD className="text-right">
                       <div className="inline-flex gap-2">
                         <Button size="sm" variant="ghost" onClick={() => openDetail(r)}>
@@ -400,41 +400,41 @@ export default function RulesPage() {
             </div>
           )}
           <label className="block space-y-1">
-            <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Title</span>
+            <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Title</span>
             <input
               value={form.title}
               onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
               placeholder="e.g. Notify supervisory authority of personal data breach"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           </label>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <label className="block space-y-1">
-              <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Citation</span>
+              <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Citation</span>
               <input
                 value={form.citation}
                 onChange={(e) => setForm((f) => ({ ...f, citation: e.target.value }))}
                 placeholder="e.g. GDPR Art. 33"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
               />
             </label>
             <label className="block space-y-1">
-              <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Jurisdiction code</span>
+              <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Jurisdiction code</span>
               <input
                 value={form.jurisdiction_code}
                 onChange={(e) => setForm((f) => ({ ...f, jurisdiction_code: e.target.value.toUpperCase() }))}
                 placeholder="e.g. EU-DE"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 font-mono text-sm uppercase text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 font-mono text-sm uppercase text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
               />
             </label>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <label className="block space-y-1">
-              <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Category</span>
+              <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Category</span>
               <select
                 value={form.category}
                 onChange={(e) => setForm((f) => ({ ...f, category: e.target.value }))}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
               >
                 {CATEGORIES.map((c) => (
                   <option key={c} value={c}>
@@ -444,11 +444,11 @@ export default function RulesPage() {
               </select>
             </label>
             <label className="block space-y-1">
-              <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Recipient type</span>
+              <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Recipient type</span>
               <select
                 value={form.recipient_type}
                 onChange={(e) => setForm((f) => ({ ...f, recipient_type: e.target.value }))}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
               >
                 {RECIPIENT_TYPES.map((r) => (
                   <option key={r} value={r}>
@@ -458,11 +458,11 @@ export default function RulesPage() {
               </select>
             </label>
             <label className="block space-y-1">
-              <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Clock anchor</span>
+              <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Clock anchor</span>
               <select
                 value={form.clock_anchor}
                 onChange={(e) => setForm((f) => ({ ...f, clock_anchor: e.target.value }))}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
               >
                 {CLOCK_ANCHORS.map((a) => (
                   <option key={a} value={a}>
@@ -474,7 +474,7 @@ export default function RulesPage() {
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <label className="block space-y-1">
-              <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Deadline (hours)</span>
+              <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Deadline (hours)</span>
               <input
                 type="number"
                 min={0}
@@ -482,7 +482,7 @@ export default function RulesPage() {
                 disabled={form.is_undue_delay}
                 onChange={(e) => setForm((f) => ({ ...f, deadline_hours: e.target.value }))}
                 placeholder="e.g. 72"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm tabular-nums text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 disabled:opacity-50"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm tabular-nums text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 disabled:opacity-50"
               />
             </label>
             <label className="flex items-center gap-2 pt-6">
@@ -490,61 +490,61 @@ export default function RulesPage() {
                 type="checkbox"
                 checked={form.is_undue_delay}
                 onChange={(e) => setForm((f) => ({ ...f, is_undue_delay: e.target.checked }))}
-                className="h-4 w-4 rounded border-zinc-600 bg-zinc-950 text-red-600 focus:ring-red-500"
+                className="h-4 w-4 rounded border-neutral-600 bg-neutral-950 text-red-600 focus:ring-red-500"
               />
-              <span className="text-sm text-zinc-300">Without undue delay (no fixed hours)</span>
+              <span className="text-sm text-neutral-300">Without undue delay (no fixed hours)</span>
             </label>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <label className="block space-y-1">
-              <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Harm threshold</span>
+              <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Harm threshold</span>
               <input
                 value={form.harm_threshold}
                 onChange={(e) => setForm((f) => ({ ...f, harm_threshold: e.target.value }))}
                 placeholder="e.g. risk_to_rights"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
               />
             </label>
             <label className="block space-y-1">
-              <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Resident threshold</span>
+              <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Resident threshold</span>
               <input
                 type="number"
                 min={0}
                 value={form.resident_threshold}
                 onChange={(e) => setForm((f) => ({ ...f, resident_threshold: e.target.value }))}
                 placeholder="e.g. 500 (blank = any)"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm tabular-nums text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm tabular-nums text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
               />
             </label>
           </div>
           <label className="block space-y-1">
-            <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">
+            <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">
               Trigger data categories
             </span>
             <input
               value={form.trigger_data_categories}
               onChange={(e) => setForm((f) => ({ ...f, trigger_data_categories: e.target.value }))}
               placeholder="comma-separated, e.g. health, financial, national_id"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           </label>
           <label className="block space-y-1">
-            <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Delivery method</span>
+            <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Delivery method</span>
             <input
               value={form.delivery_method}
               onChange={(e) => setForm((f) => ({ ...f, delivery_method: e.target.value }))}
               placeholder="e.g. online_portal, email, registered_mail"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           </label>
           <label className="block space-y-1">
-            <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Content requirements</span>
+            <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Content requirements</span>
             <textarea
               value={form.content_requirements}
               onChange={(e) => setForm((f) => ({ ...f, content_requirements: e.target.value }))}
               rows={3}
               placeholder="What the notice must contain..."
-              className="w-full resize-y rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full resize-y rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           </label>
         </form>
@@ -586,7 +586,7 @@ export default function RulesPage() {
             </dl>
             {asArray<string>(detail.trigger_data_categories).length > 0 && (
               <div>
-                <div className="mb-1 text-xs font-medium uppercase tracking-wide text-zinc-500">
+                <div className="mb-1 text-xs font-medium uppercase tracking-wide text-neutral-500">
                   Trigger data categories
                 </div>
                 <div className="flex flex-wrap gap-1">
@@ -600,16 +600,16 @@ export default function RulesPage() {
             )}
             {detail.content_requirements && (
               <div>
-                <div className="mb-1 text-xs font-medium uppercase tracking-wide text-zinc-500">
+                <div className="mb-1 text-xs font-medium uppercase tracking-wide text-neutral-500">
                   Content requirements
                 </div>
-                <p className="whitespace-pre-wrap rounded-lg border border-zinc-800 bg-zinc-950 p-3 text-sm text-zinc-300">
+                <p className="whitespace-pre-wrap rounded-lg border border-neutral-800 bg-neutral-950 p-3 text-sm text-neutral-300">
                   {detail.content_requirements}
                 </p>
               </div>
             )}
             {isCustom(detail) && (
-              <div className="flex justify-end gap-2 border-t border-zinc-800 pt-3">
+              <div className="flex justify-end gap-2 border-t border-neutral-800 pt-3">
                 <Button
                   variant="secondary"
                   onClick={() => {
@@ -632,8 +632,8 @@ export default function RulesPage() {
 function Field({ label, value }: { label: string; value?: string | null }) {
   return (
     <div>
-      <dt className="text-xs font-medium uppercase tracking-wide text-zinc-500">{label}</dt>
-      <dd className="mt-0.5 text-sm text-zinc-200">{value || <span className="text-zinc-600">—</span>}</dd>
+      <dt className="text-xs font-medium uppercase tracking-wide text-neutral-500">{label}</dt>
+      <dd className="mt-0.5 text-sm text-neutral-200">{value || <span className="text-neutral-600">—</span>}</dd>
     </div>
   )
 }

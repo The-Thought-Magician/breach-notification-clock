@@ -163,7 +163,7 @@ export default function AnalyticsPage() {
       <div className="space-y-6">
         <header>
           <p className="text-xs font-semibold uppercase tracking-widest text-red-500">Analytics</p>
-          <h1 className="mt-1 text-2xl font-bold text-zinc-100">Program metrics</h1>
+          <h1 className="mt-1 text-2xl font-bold text-neutral-100">Program metrics</h1>
         </header>
         <div className="rounded-lg border border-red-800 bg-red-950/40 px-4 py-3 text-sm text-red-300">
           {error}
@@ -181,8 +181,8 @@ export default function AnalyticsPage() {
     <div className="space-y-6">
       <header>
         <p className="text-xs font-semibold uppercase tracking-widest text-red-500">Analytics</p>
-        <h1 className="mt-1 text-2xl font-bold text-zinc-100">Program metrics</h1>
-        <p className="mt-1 text-sm text-zinc-500">
+        <h1 className="mt-1 text-2xl font-bold text-neutral-100">Program metrics</h1>
+        <p className="mt-1 text-sm text-neutral-500">
           Cross-incident compliance posture: obligations, on-time notice rate, jurisdiction load, and
           per-incident defensibility.
         </p>
@@ -221,12 +221,12 @@ export default function AnalyticsPage() {
             {/* Delivery trend chart (SVG-free bar chart via divs) */}
             <Card>
               <CardHeader>
-                <h2 className="text-sm font-semibold text-zinc-200">Delivery trend</h2>
-                <p className="mt-0.5 text-xs text-zinc-500">Notices delivered per month, on-time vs late.</p>
+                <h2 className="text-sm font-semibold text-neutral-200">Delivery trend</h2>
+                <p className="mt-0.5 text-xs text-neutral-500">Notices delivered per month, on-time vs late.</p>
               </CardHeader>
               <CardBody>
                 {trend.length === 0 ? (
-                  <p className="py-8 text-center text-sm text-zinc-600">No deliveries recorded yet.</p>
+                  <p className="py-8 text-center text-sm text-neutral-600">No deliveries recorded yet.</p>
                 ) : (
                   <div className="space-y-3">
                     <div className="flex items-end gap-2" style={{ height: 160 }}>
@@ -236,7 +236,7 @@ export default function AnalyticsPage() {
                         return (
                           <div key={t.month} className="flex flex-1 flex-col items-center gap-1">
                             <div
-                              className="relative flex w-full max-w-[48px] flex-col justify-end overflow-hidden rounded-t bg-zinc-800"
+                              className="relative flex w-full max-w-[48px] flex-col justify-end overflow-hidden rounded-t bg-neutral-800"
                               style={{ height: `${Math.max(h, 4)}%`, minHeight: 4 }}
                               title={`${t.month}: ${t.onTime} on-time, ${t.late} late`}
                             >
@@ -247,14 +247,14 @@ export default function AnalyticsPage() {
                         )
                       })}
                     </div>
-                    <div className="flex gap-2 border-t border-zinc-800 pt-2">
+                    <div className="flex gap-2 border-t border-neutral-800 pt-2">
                       {trend.map((t) => (
-                        <div key={t.month} className="flex-1 text-center text-[10px] text-zinc-500">
+                        <div key={t.month} className="flex-1 text-center text-[10px] text-neutral-500">
                           {t.month.slice(2)}
                         </div>
                       ))}
                     </div>
-                    <div className="flex items-center gap-4 text-xs text-zinc-500">
+                    <div className="flex items-center gap-4 text-xs text-neutral-500">
                       <span className="flex items-center gap-1.5">
                         <span className="h-2.5 w-2.5 rounded-sm bg-emerald-600" /> On time
                       </span>
@@ -270,12 +270,12 @@ export default function AnalyticsPage() {
             {/* By jurisdiction */}
             <Card>
               <CardHeader>
-                <h2 className="text-sm font-semibold text-zinc-200">By jurisdiction</h2>
-                <p className="mt-0.5 text-xs text-zinc-500">Obligation load and risk per jurisdiction.</p>
+                <h2 className="text-sm font-semibold text-neutral-200">By jurisdiction</h2>
+                <p className="mt-0.5 text-xs text-neutral-500">Obligation load and risk per jurisdiction.</p>
               </CardHeader>
               <CardBody className="p-0">
                 {byJurisdiction.length === 0 ? (
-                  <p className="py-8 text-center text-sm text-zinc-600">No obligations yet.</p>
+                  <p className="py-8 text-center text-sm text-neutral-600">No obligations yet.</p>
                 ) : (
                   <Table>
                     <THead>
@@ -291,7 +291,7 @@ export default function AnalyticsPage() {
                       {byJurisdiction.map((j) => (
                         <TR key={j.jurisdictionCode}>
                           <TD>
-                            <span className="font-mono text-xs font-semibold text-zinc-100">
+                            <span className="font-mono text-xs font-semibold text-neutral-100">
                               {j.jurisdictionCode}
                             </span>
                           </TD>
@@ -301,14 +301,14 @@ export default function AnalyticsPage() {
                             {j.overdue > 0 ? (
                               <span className="text-red-400">{j.overdue}</span>
                             ) : (
-                              <span className="text-zinc-600">0</span>
+                              <span className="text-neutral-600">0</span>
                             )}
                           </TD>
                           <TD className="text-right tabular-nums">
                             {j.late > 0 ? (
                               <span className="text-amber-400">{j.late}</span>
                             ) : (
-                              <span className="text-zinc-600">0</span>
+                              <span className="text-neutral-600">0</span>
                             )}
                           </TD>
                         </TR>
@@ -324,17 +324,17 @@ export default function AnalyticsPage() {
           <Card>
             <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h2 className="text-sm font-semibold text-zinc-200">Per-incident summary</h2>
-                <p className="mt-0.5 text-xs text-zinc-500">
+                <h2 className="text-sm font-semibold text-neutral-200">Per-incident summary</h2>
+                <p className="mt-0.5 text-xs text-neutral-500">
                   Drill into one incident&apos;s notice timeline and defensibility.
                 </p>
               </div>
               <label className="flex flex-col gap-1 sm:w-72">
-                <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Incident</span>
+                <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Incident</span>
                 <select
                   value={selectedId}
                   onChange={(e) => setSelectedId(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                  className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                 >
                   {incidents.map((i) => (
                     <option key={i.id} value={i.id}>
@@ -355,11 +355,11 @@ export default function AnalyticsPage() {
                   {incidentError}
                 </div>
               ) : !incidentSummary ? (
-                <p className="py-8 text-center text-sm text-zinc-600">Select an incident to view its summary.</p>
+                <p className="py-8 text-center text-sm text-neutral-600">Select an incident to view its summary.</p>
               ) : (
                 <div className="space-y-5">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-base font-semibold text-zinc-100">{incidentSummary.title}</span>
+                    <span className="text-base font-semibold text-neutral-100">{incidentSummary.title}</span>
                     {incidentSummary.severity && (
                       <Badge tone={incidentSummary.severity === 'critical' ? 'red' : 'amber'}>
                         {incidentSummary.severity}
@@ -394,17 +394,17 @@ export default function AnalyticsPage() {
                   </div>
 
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                    <div className="rounded-lg border border-zinc-800 bg-zinc-950/60 px-4 py-3">
-                      <div className="text-xs font-medium uppercase tracking-wide text-zinc-500">Clock start</div>
-                      <div className="mt-1 text-sm text-zinc-200">{fmtDate(incidentSummary.clockStartAt)}</div>
+                    <div className="rounded-lg border border-neutral-800 bg-neutral-950/60 px-4 py-3">
+                      <div className="text-xs font-medium uppercase tracking-wide text-neutral-500">Clock start</div>
+                      <div className="mt-1 text-sm text-neutral-200">{fmtDate(incidentSummary.clockStartAt)}</div>
                     </div>
-                    <div className="rounded-lg border border-zinc-800 bg-zinc-950/60 px-4 py-3">
-                      <div className="text-xs font-medium uppercase tracking-wide text-zinc-500">First notice</div>
-                      <div className="mt-1 text-sm text-zinc-200">{fmtDate(incidentSummary.firstNoticeAt)}</div>
+                    <div className="rounded-lg border border-neutral-800 bg-neutral-950/60 px-4 py-3">
+                      <div className="text-xs font-medium uppercase tracking-wide text-neutral-500">First notice</div>
+                      <div className="mt-1 text-sm text-neutral-200">{fmtDate(incidentSummary.firstNoticeAt)}</div>
                     </div>
-                    <div className="rounded-lg border border-zinc-800 bg-zinc-950/60 px-4 py-3">
-                      <div className="text-xs font-medium uppercase tracking-wide text-zinc-500">Late notices</div>
-                      <div className="mt-1 text-sm font-semibold tabular-nums text-zinc-200">
+                    <div className="rounded-lg border border-neutral-800 bg-neutral-950/60 px-4 py-3">
+                      <div className="text-xs font-medium uppercase tracking-wide text-neutral-500">Late notices</div>
+                      <div className="mt-1 text-sm font-semibold tabular-nums text-neutral-200">
                         {incidentSummary.late > 0 ? (
                           <span className="text-red-400">{incidentSummary.late}</span>
                         ) : (

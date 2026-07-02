@@ -130,8 +130,8 @@ export default function NotificationsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-zinc-100">Notifications</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-2xl font-bold text-neutral-100">Notifications</h1>
+          <p className="mt-1 text-sm text-neutral-500">
             Deadline alerts, sign-off requests, delivery confirmations and mentions.
           </p>
         </div>
@@ -154,7 +154,7 @@ export default function NotificationsPage() {
       )}
 
       <Card>
-        <div className="flex flex-wrap items-center gap-3 border-b border-zinc-800 px-5 py-4">
+        <div className="flex flex-wrap items-center gap-3 border-b border-neutral-800 px-5 py-4">
           <div className="flex flex-wrap gap-1.5">
             <FilterChip active={filter === 'all'} onClick={() => setFilter('all')}>
               All
@@ -173,7 +173,7 @@ export default function NotificationsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search notifications..."
-              className="w-48 rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-200 placeholder-zinc-600 focus:border-red-600 focus:outline-none"
+              className="w-48 rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-1.5 text-sm text-neutral-200 placeholder-neutral-600 focus:border-red-600 focus:outline-none"
             />
             <Button
               variant="secondary"
@@ -198,31 +198,31 @@ export default function NotificationsPage() {
               icon="🔔"
             />
           ) : (
-            <ul className="divide-y divide-zinc-800">
+            <ul className="divide-y divide-neutral-800">
               {filtered.map((n) => {
                 const tone = KIND_TONE[n.kind] ?? 'zinc'
                 return (
                   <li
                     key={n.id}
-                    className={`flex items-start gap-4 px-5 py-4 transition-colors hover:bg-zinc-900/60 ${
+                    className={`flex items-start gap-4 px-5 py-4 transition-colors hover:bg-neutral-900/60 ${
                       n.is_read ? 'opacity-70' : ''
                     }`}
                   >
                     <span
                       className={`mt-2 h-2 w-2 shrink-0 rounded-full ${
-                        n.is_read ? 'bg-zinc-700' : 'bg-red-500'
+                        n.is_read ? 'bg-neutral-700' : 'bg-red-500'
                       }`}
                       aria-hidden
                     />
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2">
                         <Badge tone={tone}>{KIND_LABEL[n.kind] ?? n.kind}</Badge>
-                        <span className="truncate font-medium text-zinc-100">{n.title}</span>
-                        <span className="ml-auto shrink-0 text-xs text-zinc-500">
+                        <span className="truncate font-medium text-neutral-100">{n.title}</span>
+                        <span className="ml-auto shrink-0 text-xs text-neutral-500">
                           {timeAgo(n.created_at)}
                         </span>
                       </div>
-                      {n.body && <p className="mt-1 text-sm text-zinc-400">{n.body}</p>}
+                      {n.body && <p className="mt-1 text-sm text-neutral-400">{n.body}</p>}
                       <div className="mt-2 flex items-center gap-3">
                         {n.link && (
                           <Link
@@ -237,7 +237,7 @@ export default function NotificationsPage() {
                           <button
                             onClick={() => markRead(n)}
                             disabled={busyId === n.id}
-                            className="text-xs font-medium text-zinc-500 hover:text-zinc-200 disabled:opacity-50"
+                            className="text-xs font-medium text-neutral-500 hover:text-neutral-200 disabled:opacity-50"
                           >
                             {busyId === n.id ? 'Marking...' : 'Mark read'}
                           </button>
@@ -270,7 +270,7 @@ function FilterChip({
       className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
         active
           ? 'border-red-700 bg-red-950/60 text-red-300'
-          : 'border-zinc-700 bg-zinc-900 text-zinc-400 hover:text-zinc-200'
+          : 'border-neutral-700 bg-neutral-900 text-neutral-400 hover:text-neutral-200'
       }`}
     >
       {children}

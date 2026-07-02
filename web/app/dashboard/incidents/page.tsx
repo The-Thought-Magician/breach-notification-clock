@@ -152,8 +152,8 @@ export default function IncidentsPage() {
     <div className="space-y-6">
       <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-zinc-100">Incidents</h1>
-          <p className="mt-1 text-sm text-zinc-500">Every logged breach incident, ranked by severity and status.</p>
+          <h1 className="text-2xl font-bold text-neutral-100">Incidents</h1>
+          <p className="mt-1 text-sm text-neutral-500">Every logged breach incident, ranked by severity and status.</p>
         </div>
         <Link href="/dashboard/incidents/new">
           <Button>New incident</Button>
@@ -178,12 +178,12 @@ export default function IncidentsPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search title, reference, summary..."
-            className="w-full flex-1 rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+            className="w-full flex-1 rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 placeholder-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
           />
           <select
             value={severityFilter}
             onChange={(e) => setSeverityFilter(e.target.value)}
-            className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-500 focus:outline-none"
+            className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-500 focus:outline-none"
           >
             <option value="">All severities</option>
             {SEVERITY_OPTIONS.map((s) => (
@@ -195,7 +195,7 @@ export default function IncidentsPage() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-500 focus:outline-none"
+            className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-500 focus:outline-none"
           >
             <option value="">All statuses</option>
             {STATUS_OPTIONS.map((s) => (
@@ -204,12 +204,12 @@ export default function IncidentsPage() {
               </option>
             ))}
           </select>
-          <label className="inline-flex select-none items-center gap-2 whitespace-nowrap text-sm text-zinc-400">
+          <label className="inline-flex select-none items-center gap-2 whitespace-nowrap text-sm text-neutral-400">
             <input
               type="checkbox"
               checked={showDrills}
               onChange={(e) => setShowDrills(e.target.checked)}
-              className="h-4 w-4 rounded border-zinc-600 bg-zinc-950 accent-red-600"
+              className="h-4 w-4 rounded border-neutral-600 bg-neutral-950 accent-red-600"
             />
             Show drills
           </label>
@@ -222,7 +222,7 @@ export default function IncidentsPage() {
       {/* Bulk action bar */}
       {selected.size > 0 && (
         <div className="flex items-center justify-between rounded-lg border border-red-800 bg-red-950/30 px-4 py-3 text-sm">
-          <span className="text-zinc-200">{selected.size} selected</span>
+          <span className="text-neutral-200">{selected.size} selected</span>
           <div className="flex items-center gap-2">
             {bulkBusy && <Spinner />}
             <Button variant="ghost" size="sm" onClick={() => setSelected(new Set())} disabled={bulkBusy}>
@@ -266,7 +266,7 @@ export default function IncidentsPage() {
                   checked={allVisibleSelected}
                   onChange={toggleAll}
                   aria-label="Select all"
-                  className="h-4 w-4 rounded border-zinc-600 bg-zinc-950 accent-red-600"
+                  className="h-4 w-4 rounded border-neutral-600 bg-neutral-950 accent-red-600"
                 />
               </TH>
               <TH>Incident</TH>
@@ -285,14 +285,14 @@ export default function IncidentsPage() {
                     checked={selected.has(i.id)}
                     onChange={() => toggleOne(i.id)}
                     aria-label={`Select ${i.title}`}
-                    className="h-4 w-4 rounded border-zinc-600 bg-zinc-950 accent-red-600"
+                    className="h-4 w-4 rounded border-neutral-600 bg-neutral-950 accent-red-600"
                   />
                 </TD>
                 <TD>
-                  <Link href={`/dashboard/incidents/${i.id}`} className="font-medium text-zinc-100 hover:text-red-300">
+                  <Link href={`/dashboard/incidents/${i.id}`} className="font-medium text-neutral-100 hover:text-red-300">
                     {i.title}
                   </Link>
-                  <div className="mt-0.5 flex items-center gap-2 text-xs text-zinc-500">
+                  <div className="mt-0.5 flex items-center gap-2 text-xs text-neutral-500">
                     {i.reference_number && <span className="font-mono">{i.reference_number}</span>}
                     {i.is_drill && <Badge tone="blue">drill</Badge>}
                     {i.is_confidential && <Badge tone="zinc">confidential</Badge>}
@@ -304,7 +304,7 @@ export default function IncidentsPage() {
                 <TD>
                   <Badge tone={STATUS_TONE[(i.status ?? '').toLowerCase()] ?? 'zinc'}>{i.status || 'triage'}</Badge>
                 </TD>
-                <TD className="whitespace-nowrap text-xs text-zinc-500">
+                <TD className="whitespace-nowrap text-xs text-neutral-500">
                   {i.created_at ? new Date(i.created_at).toLocaleDateString() : '—'}
                 </TD>
                 <TD className="text-right">
@@ -327,7 +327,7 @@ export default function IncidentsPage() {
         </Table>
       )}
 
-      <p className="text-xs text-zinc-600">
+      <p className="text-xs text-neutral-600">
         Showing {filtered.length} of {incidents.length} incidents.
       </p>
     </div>

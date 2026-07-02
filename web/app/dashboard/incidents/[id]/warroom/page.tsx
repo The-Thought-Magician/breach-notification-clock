@@ -43,9 +43,9 @@ const BAND: Record<Band, { ring: string; text: string; chip: string; label: stri
   overdue: { ring: 'border-red-600 bg-red-950/40', text: 'text-red-400', chip: 'bg-red-600 text-white', label: 'OVERDUE' },
   critical: { ring: 'border-red-700/70 bg-red-950/25', text: 'text-red-400', chip: 'bg-red-700 text-white', label: '< 24H' },
   warning: { ring: 'border-amber-700/70 bg-amber-950/20', text: 'text-amber-400', chip: 'bg-amber-600 text-black', label: '< 72H' },
-  ok: { ring: 'border-zinc-800 bg-zinc-900', text: 'text-emerald-400', chip: 'bg-emerald-700 text-white', label: 'ON TRACK' },
+  ok: { ring: 'border-neutral-800 bg-neutral-900', text: 'text-emerald-400', chip: 'bg-emerald-700 text-white', label: 'ON TRACK' },
   done: { ring: 'border-emerald-800/60 bg-emerald-950/20', text: 'text-emerald-400', chip: 'bg-emerald-800 text-emerald-100', label: 'DONE' },
-  none: { ring: 'border-zinc-800 bg-zinc-900', text: 'text-zinc-400', chip: 'bg-zinc-700 text-zinc-200', label: 'NO DEADLINE' },
+  none: { ring: 'border-neutral-800 bg-neutral-900', text: 'text-neutral-400', chip: 'bg-neutral-700 text-neutral-200', label: 'NO DEADLINE' },
 }
 
 function parts(deadlineAt?: string | null): { d: number; h: number; m: number; s: number; late: boolean } | null {
@@ -157,16 +157,16 @@ export default function WarRoomPage({ params }: { params: Promise<{ id: string }
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col gap-2 border-b border-zinc-800 pb-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-2 border-b border-neutral-800 pb-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <div className="flex items-center gap-2 text-xs text-zinc-500">
-            <Link href={`/dashboard/incidents/${id}`} className="hover:text-zinc-300">
+          <div className="flex items-center gap-2 text-xs text-neutral-500">
+            <Link href={`/dashboard/incidents/${id}`} className="hover:text-neutral-300">
               Incident
             </Link>
             <span>/</span>
-            <span className="text-zinc-400">War Room</span>
+            <span className="text-neutral-400">War Room</span>
           </div>
-          <h1 className="mt-1 flex items-center gap-3 text-2xl font-bold text-zinc-100">
+          <h1 className="mt-1 flex items-center gap-3 text-2xl font-bold text-neutral-100">
             <span className="relative flex h-3 w-3">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
               <span className="relative inline-flex h-3 w-3 rounded-full bg-red-600" />
@@ -194,11 +194,11 @@ export default function WarRoomPage({ params }: { params: Promise<{ id: string }
               <span className={`rounded-full px-3 py-1 text-xs font-bold tracking-widest ${heroMeta.chip}`}>
                 {heroMeta.label}
               </span>
-              <span className="text-sm uppercase tracking-widest text-zinc-500">Next deadline</span>
+              <span className="text-sm uppercase tracking-widest text-neutral-500">Next deadline</span>
             </div>
-            <div className="mt-4 text-lg font-semibold text-zinc-200">
+            <div className="mt-4 text-lg font-semibold text-neutral-200">
               {hero.recipient || 'Recipient'}{' '}
-              <span className="text-zinc-500">· {hero.jurisdiction_code || 'global'}</span>
+              <span className="text-neutral-500">· {hero.jurisdiction_code || 'global'}</span>
             </div>
             <div className={`mt-4 font-mono text-5xl font-black tabular-nums sm:text-7xl ${heroMeta.text}`}>
               {heroParts.d > 0 && <span>{heroParts.d}d </span>}
@@ -208,14 +208,14 @@ export default function WarRoomPage({ params }: { params: Promise<{ id: string }
               {heroParts.late ? 'PAST DEADLINE' : 'remaining'}
               {hero.is_undue_delay && <span className="ml-2 text-amber-400">· without undue delay</span>}
             </div>
-            <div className="mt-2 text-xs text-zinc-500">
+            <div className="mt-2 text-xs text-neutral-500">
               Due {hero.deadline_at ? new Date(hero.deadline_at).toLocaleString() : '—'}
             </div>
           </>
         ) : (
           <div className="py-8">
             <div className="text-2xl font-bold text-emerald-400">All clear</div>
-            <p className="mt-2 text-sm text-zinc-500">No active deadlines. Every obligation is delivered or has no clock.</p>
+            <p className="mt-2 text-sm text-neutral-500">No active deadlines. Every obligation is delivered or has no clock.</p>
           </div>
         )}
       </div>
@@ -233,7 +233,7 @@ export default function WarRoomPage({ params }: { params: Promise<{ id: string }
         ).map(([b, label, n]) => (
           <div key={b} className={`rounded-xl border p-4 text-center ${BAND[b].ring}`}>
             <div className={`text-3xl font-black tabular-nums ${BAND[b].text}`}>{n}</div>
-            <div className="mt-1 text-xs uppercase tracking-wide text-zinc-500">{label}</div>
+            <div className="mt-1 text-xs uppercase tracking-wide text-neutral-500">{label}</div>
           </div>
         ))}
       </div>
@@ -265,10 +265,10 @@ export default function WarRoomPage({ params }: { params: Promise<{ id: string }
                   <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold tracking-widest ${meta.chip}`}>
                     {meta.label}
                   </span>
-                  <span className="text-xs text-zinc-500">{o.jurisdiction_code || 'global'}</span>
+                  <span className="text-xs text-neutral-500">{o.jurisdiction_code || 'global'}</span>
                 </div>
-                <div className="mt-3 truncate text-sm font-semibold text-zinc-100">{o.recipient || 'Recipient'}</div>
-                <div className="text-xs text-zinc-500">{o.recipient_type || ''}</div>
+                <div className="mt-3 truncate text-sm font-semibold text-neutral-100">{o.recipient || 'Recipient'}</div>
+                <div className="text-xs text-neutral-500">{o.recipient_type || ''}</div>
                 <div className={`mt-3 font-mono text-3xl font-black tabular-nums ${meta.text}`}>
                   {band === 'done' ? (
                     '✓'
@@ -281,7 +281,7 @@ export default function WarRoomPage({ params }: { params: Promise<{ id: string }
                     '—'
                   )}
                 </div>
-                <div className="mt-1 text-[11px] text-zinc-500">
+                <div className="mt-1 text-[11px] text-neutral-500">
                   {band === 'done'
                     ? o.status
                     : p?.late

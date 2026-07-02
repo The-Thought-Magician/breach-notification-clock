@@ -322,7 +322,7 @@ export default function ArtifactDetailPage() {
         <Card className="border-red-900/60">
           <CardBody>
             <h2 className="text-lg font-semibold text-red-300">Could not load artifact</h2>
-            <p className="mt-1 text-sm text-zinc-400">{error}</p>
+            <p className="mt-1 text-sm text-neutral-400">{error}</p>
             <div className="mt-4 flex gap-2">
               <Button onClick={load}>Retry</Button>
               <Button variant="secondary" onClick={() => router.back()}>
@@ -347,17 +347,17 @@ export default function ArtifactDetailPage() {
       {/* header */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <div className="flex items-center gap-2 text-xs text-zinc-500">
+          <div className="flex items-center gap-2 text-xs text-neutral-500">
             <Link
               href={`/dashboard/obligations/${artifact.obligation_id}`}
-              className="hover:text-zinc-300"
+              className="hover:text-neutral-300"
             >
               Obligation
             </Link>
             <span>/</span>
-            <span className="text-zinc-400">Artifact</span>
+            <span className="text-neutral-400">Artifact</span>
           </div>
-          <h1 className="mt-1 text-2xl font-bold text-zinc-100">{savedTitle || 'Untitled notice'}</h1>
+          <h1 className="mt-1 text-2xl font-bold text-neutral-100">{savedTitle || 'Untitled notice'}</h1>
           <div className="mt-2 flex flex-wrap items-center gap-2">
             <Badge tone={statusTone(artifact.status)}>{artifact.status.replace(/_/g, ' ')}</Badge>
             {artifact.delivery_channel && <Badge tone="zinc">{artifact.delivery_channel}</Badge>}
@@ -397,7 +397,7 @@ export default function ArtifactDetailPage() {
       {/* editor */}
       <Card>
         <CardHeader className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-zinc-200">Editor</h2>
+          <h2 className="text-sm font-semibold text-neutral-200">Editor</h2>
           <div className="flex items-center gap-2">
             {dirty && <span className="text-xs text-amber-400">Unsaved changes</span>}
             <Button size="sm" onClick={save} disabled={saving || !dirty}>
@@ -407,22 +407,22 @@ export default function ArtifactDetailPage() {
         </CardHeader>
         <CardBody className="space-y-4">
           <div>
-            <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">Title</label>
+            <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">Title</label>
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
             />
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">
+              <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
                 Status
               </label>
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
               >
                 {ARTIFACT_STATUSES.map((s) => (
                   <option key={s} value={s}>
@@ -452,17 +452,17 @@ export default function ArtifactDetailPage() {
           </div>
           <div>
             <div className="mb-1 flex items-center justify-between">
-              <label className="block text-xs uppercase tracking-wide text-zinc-500">
+              <label className="block text-xs uppercase tracking-wide text-neutral-500">
                 Notice body
               </label>
-              <span className="text-[11px] text-zinc-500">{body.length} chars</span>
+              <span className="text-[11px] text-neutral-500">{body.length} chars</span>
             </div>
             <textarea
               value={body}
               onChange={(e) => setBody(e.target.value)}
               rows={16}
               placeholder="Draft the notice text. Saving with a changed body snapshots a new version."
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 font-mono text-sm leading-relaxed text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 font-mono text-sm leading-relaxed text-neutral-200 focus:border-red-500 focus:outline-none"
             />
           </div>
         </CardBody>
@@ -471,7 +471,7 @@ export default function ArtifactDetailPage() {
       {/* sign-off workflow */}
       <Card>
         <CardHeader className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-zinc-200">Sign-off workflow</h2>
+          <h2 className="text-sm font-semibold text-neutral-200">Sign-off workflow</h2>
           <Button size="sm" onClick={() => setSignoffOpen(true)}>
             + Request sign-off
           </Button>
@@ -486,21 +486,21 @@ export default function ArtifactDetailPage() {
           ) : (
             <ul className="space-y-3">
               {signoffs.map((s) => (
-                <li key={s.id} className="rounded-lg border border-zinc-800 bg-zinc-950/40 px-4 py-3">
+                <li key={s.id} className="rounded-lg border border-neutral-800 bg-neutral-950/40 px-4 py-3">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
                       <Badge tone={decisionTone(s.decision)}>{s.decision}</Badge>
-                      <span className="text-sm text-zinc-200">{s.approver_id}</span>
+                      <span className="text-sm text-neutral-200">{s.approver_id}</span>
                       {s.approved_version != null && (
-                        <span className="text-xs text-zinc-500">v{s.approved_version}</span>
+                        <span className="text-xs text-neutral-500">v{s.approved_version}</span>
                       )}
                     </div>
-                    <span className="text-xs text-zinc-500">
+                    <span className="text-xs text-neutral-500">
                       {s.decided_at ? `Decided ${fmt(s.decided_at)}` : `Requested ${fmt(s.created_at)}`}
                     </span>
                   </div>
                   {s.comment && (
-                    <p className="mt-2 whitespace-pre-wrap text-sm text-zinc-400">{s.comment}</p>
+                    <p className="mt-2 whitespace-pre-wrap text-sm text-neutral-400">{s.comment}</p>
                   )}
                   {s.decision === 'pending' && (
                     <div className="mt-3">
@@ -511,7 +511,7 @@ export default function ArtifactDetailPage() {
                             onChange={(e) => setDecisionComment(e.target.value)}
                             rows={2}
                             placeholder="Optional decision comment"
-                            className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+                            className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
                           />
                           <div className="flex gap-2">
                             <Button
@@ -565,7 +565,7 @@ export default function ArtifactDetailPage() {
       {/* proof of delivery */}
       <Card>
         <CardHeader className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-zinc-200">Proof of delivery</h2>
+          <h2 className="text-sm font-semibold text-neutral-200">Proof of delivery</h2>
           <Button size="sm" onClick={() => setDeliveryOpen(true)}>
             + Record delivery
           </Button>
@@ -624,11 +624,11 @@ export default function ArtifactDetailPage() {
       {/* version history */}
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-zinc-200">Version history</h2>
+          <h2 className="text-sm font-semibold text-neutral-200">Version history</h2>
         </CardHeader>
         <CardBody>
           {versions.length === 0 ? (
-            <p className="text-sm text-zinc-500">
+            <p className="text-sm text-neutral-500">
               No versions yet. Each save with a changed body snapshots a version here.
             </p>
           ) : (
@@ -645,10 +645,10 @@ export default function ArtifactDetailPage() {
               <TBody>
                 {versions.map((v) => (
                   <TR key={v.id}>
-                    <TD className="font-medium text-zinc-100">v{v.version}</TD>
+                    <TD className="font-medium text-neutral-100">v{v.version}</TD>
                     <TD>{v.created_by}</TD>
-                    <TD className="text-zinc-400">{fmt(v.created_at)}</TD>
-                    <TD className="text-zinc-400">{v.body.length} chars</TD>
+                    <TD className="text-neutral-400">{fmt(v.created_at)}</TD>
+                    <TD className="text-neutral-400">{v.body.length} chars</TD>
                     <TD className="text-right">
                       <Button variant="ghost" size="sm" onClick={() => setPreviewVersion(v)}>
                         View
@@ -685,16 +685,16 @@ export default function ArtifactDetailPage() {
             </div>
           )}
           <div>
-            <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">
+            <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
               Approver user id
             </label>
             <input
               value={approverId}
               onChange={(e) => setApproverId(e.target.value)}
               placeholder="user id of the approver"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
             />
-            <p className="mt-1 text-[11px] text-zinc-500">
+            <p className="mt-1 text-[11px] text-neutral-500">
               The approver gets a notification to approve or reject the current draft.
             </p>
           </div>
@@ -724,11 +724,11 @@ export default function ArtifactDetailPage() {
             </div>
           )}
           <div>
-            <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">Method</label>
+            <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">Method</label>
             <select
               value={delMethod}
               onChange={(e) => setDelMethod(e.target.value)}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
             >
               <option value="portal">Portal</option>
               <option value="email">Email</option>
@@ -737,37 +737,37 @@ export default function ArtifactDetailPage() {
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">
+            <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
               Delivered at
             </label>
             <input
               type="datetime-local"
               value={delAt}
               onChange={(e) => setDelAt(e.target.value)}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
             />
-            <p className="mt-1 text-[11px] text-zinc-500">Leave blank to use the current time.</p>
+            <p className="mt-1 text-[11px] text-neutral-500">Leave blank to use the current time.</p>
           </div>
           <div>
-            <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">
+            <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
               Confirmation reference
             </label>
             <input
               value={delConfirmation}
               onChange={(e) => setDelConfirmation(e.target.value)}
               placeholder="portal ticket / tracking number"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">
+            <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
               Evidence URI
             </label>
             <input
               value={delEvidence}
               onChange={(e) => setDelEvidence(e.target.value)}
               placeholder="https://… receipt or screenshot"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
             />
           </div>
         </form>
@@ -787,10 +787,10 @@ export default function ArtifactDetailPage() {
       >
         {previewVersion && (
           <div className="space-y-3">
-            <div className="text-xs text-zinc-500">
+            <div className="text-xs text-neutral-500">
               {previewVersion.created_by} · {fmt(previewVersion.created_at)}
             </div>
-            <pre className="max-h-[50vh] overflow-auto whitespace-pre-wrap rounded-lg border border-zinc-800 bg-zinc-950 p-4 font-mono text-sm text-zinc-200">
+            <pre className="max-h-[50vh] overflow-auto whitespace-pre-wrap rounded-lg border border-neutral-800 bg-neutral-950 p-4 font-mono text-sm text-neutral-200">
               {previewVersion.body || '(empty)'}
             </pre>
           </div>
@@ -813,8 +813,8 @@ export default function ArtifactDetailPage() {
           </>
         }
       >
-        <p className="text-sm text-zinc-300">
-          This permanently deletes <span className="font-medium text-zinc-100">{savedTitle}</span> and
+        <p className="text-sm text-neutral-300">
+          This permanently deletes <span className="font-medium text-neutral-100">{savedTitle}</span> and
           its version history. This cannot be undone.
         </p>
       </Modal>

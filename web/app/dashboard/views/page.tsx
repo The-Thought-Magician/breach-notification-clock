@@ -184,8 +184,8 @@ export default function ViewsPage() {
       <header className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-red-500">Saved Views</p>
-          <h1 className="mt-1 text-2xl font-bold text-zinc-100">View manager</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="mt-1 text-2xl font-bold text-neutral-100">View manager</h1>
+          <p className="mt-1 text-sm text-neutral-500">
             Reusable filter configurations for obligation matrices and lists. Mark one as default, or share
             with your team.
           </p>
@@ -218,8 +218,8 @@ export default function ViewsPage() {
             <Card key={v.id} className={v.is_default ? 'ring-1 ring-red-800/60' : ''}>
               <CardHeader className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
-                  <h2 className="truncate text-sm font-semibold text-zinc-100">{v.name}</h2>
-                  <p className="mt-0.5 text-xs text-zinc-600">Created {fmtDate(v.created_at)}</p>
+                  <h2 className="truncate text-sm font-semibold text-neutral-100">{v.name}</h2>
+                  <p className="mt-0.5 text-xs text-neutral-600">Created {fmtDate(v.created_at)}</p>
                 </div>
                 <div className="flex shrink-0 flex-wrap justify-end gap-1">
                   {v.is_default && <Badge tone="red">Default</Badge>}
@@ -228,8 +228,8 @@ export default function ViewsPage() {
               </CardHeader>
               <CardBody className="space-y-4">
                 <div>
-                  <div className="mb-1 text-xs font-medium uppercase tracking-wide text-zinc-500">Config</div>
-                  <p className="line-clamp-2 break-words text-xs text-zinc-400">{configSummary(v.config)}</p>
+                  <div className="mb-1 text-xs font-medium uppercase tracking-wide text-neutral-500">Config</div>
+                  <p className="line-clamp-2 break-words text-xs text-neutral-400">{configSummary(v.config)}</p>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   <Button
@@ -283,16 +283,16 @@ export default function ViewsPage() {
             </div>
           )}
           <label className="block space-y-1">
-            <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Name</span>
+            <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Name</span>
             <input
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
               placeholder="e.g. Overdue regulator notices"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           </label>
           <label className="block space-y-1">
-            <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">
+            <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">
               Filter config (JSON)
             </span>
             <textarea
@@ -301,28 +301,28 @@ export default function ViewsPage() {
               rows={6}
               spellCheck={false}
               placeholder={'{\n  "status": "open",\n  "jurisdiction": "EU-DE"\n}'}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 font-mono text-xs text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 font-mono text-xs text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
-            <span className="text-xs text-zinc-600">
+            <span className="text-xs text-neutral-600">
               Key/value filters applied when this view is loaded in an obligation matrix.
             </span>
           </label>
           <div className="flex flex-col gap-3 sm:flex-row sm:gap-6">
-            <label className="flex items-center gap-2 text-sm text-zinc-300">
+            <label className="flex items-center gap-2 text-sm text-neutral-300">
               <input
                 type="checkbox"
                 checked={form.is_default}
                 onChange={(e) => setForm((f) => ({ ...f, is_default: e.target.checked }))}
-                className="h-4 w-4 rounded border-zinc-700 bg-zinc-950 text-red-600 focus:ring-red-500"
+                className="h-4 w-4 rounded border-neutral-700 bg-neutral-950 text-red-600 focus:ring-red-500"
               />
               Set as default
             </label>
-            <label className="flex items-center gap-2 text-sm text-zinc-300">
+            <label className="flex items-center gap-2 text-sm text-neutral-300">
               <input
                 type="checkbox"
                 checked={form.is_shared}
                 onChange={(e) => setForm((f) => ({ ...f, is_shared: e.target.checked }))}
-                className="h-4 w-4 rounded border-zinc-700 bg-zinc-950 text-red-600 focus:ring-red-500"
+                className="h-4 w-4 rounded border-neutral-700 bg-neutral-950 text-red-600 focus:ring-red-500"
               />
               Share with team
             </label>

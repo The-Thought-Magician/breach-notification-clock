@@ -207,8 +207,8 @@ export default function PopulationsPage() {
       <header className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-red-500">Affected Populations</p>
-          <h1 className="mt-1 text-2xl font-bold text-zinc-100">Per-jurisdiction headcount</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="mt-1 text-2xl font-bold text-neutral-100">Per-jurisdiction headcount</h1>
+          <p className="mt-1 text-sm text-neutral-500">
             Record how many residents are affected in each jurisdiction. These counts drive resident-threshold
             triggers in the obligation engine.
           </p>
@@ -229,11 +229,11 @@ export default function PopulationsPage() {
           <Card>
             <CardBody className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <label className="flex flex-1 flex-col gap-1 sm:max-w-md">
-                <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Incident</span>
+                <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Incident</span>
                 <select
                   value={selectedId}
                   onChange={(e) => setSelectedId(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                  className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                 >
                   {incidents.map((i) => (
                     <option key={i.id} value={i.id}>
@@ -270,12 +270,12 @@ export default function PopulationsPage() {
 
           <Card>
             <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <h2 className="text-sm font-semibold text-zinc-200">Breakdown</h2>
+              <h2 className="text-sm font-semibold text-neutral-200">Breakdown</h2>
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Filter by jurisdiction or category..."
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 sm:w-64"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-1.5 text-sm text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 sm:w-64"
               />
             </CardHeader>
             <CardBody className="p-0">
@@ -317,26 +317,26 @@ export default function PopulationsPage() {
                       return (
                         <TR key={p.id}>
                           <TD>
-                            <span className="font-mono text-sm font-semibold text-zinc-100">
+                            <span className="font-mono text-sm font-semibold text-neutral-100">
                               {p.jurisdiction_code}
                             </span>
                           </TD>
                           <TD className="tabular-nums font-semibold">{nf(p.count || 0)}</TD>
                           <TD className="hidden md:table-cell">
                             <div className="flex items-center gap-2">
-                              <div className="h-2 w-28 overflow-hidden rounded-full bg-zinc-800">
+                              <div className="h-2 w-28 overflow-hidden rounded-full bg-neutral-800">
                                 <div
                                   className="h-full rounded-full bg-red-600"
                                   style={{ width: `${bar}%` }}
                                 />
                               </div>
-                              <span className="text-xs tabular-nums text-zinc-500">{share.toFixed(1)}%</span>
+                              <span className="text-xs tabular-nums text-neutral-500">{share.toFixed(1)}%</span>
                             </div>
                           </TD>
                           <TD className="hidden lg:table-cell">
                             <div className="flex flex-wrap gap-1">
                               {asArray<string>(p.data_categories).length === 0 ? (
-                                <span className="text-xs text-zinc-600">—</span>
+                                <span className="text-xs text-neutral-600">—</span>
                               ) : (
                                 asArray<string>(p.data_categories).map((c) => (
                                   <Badge key={c} tone="zinc">
@@ -394,31 +394,31 @@ export default function PopulationsPage() {
             </div>
           )}
           <label className="block space-y-1">
-            <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Jurisdiction code</span>
+            <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Jurisdiction code</span>
             <input
               value={form.jurisdiction_code}
               onChange={(e) => setForm((f) => ({ ...f, jurisdiction_code: e.target.value.toUpperCase() }))}
               placeholder="e.g. US-CA, EU-DE, UK"
               disabled={!!editing}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 font-mono text-sm uppercase text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 disabled:opacity-60"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 font-mono text-sm uppercase text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 disabled:opacity-60"
             />
             {editing && (
-              <span className="text-xs text-zinc-600">Jurisdiction is fixed; delete and re-add to change.</span>
+              <span className="text-xs text-neutral-600">Jurisdiction is fixed; delete and re-add to change.</span>
             )}
           </label>
           <label className="block space-y-1">
-            <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Affected residents</span>
+            <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Affected residents</span>
             <input
               type="number"
               min={0}
               value={form.count}
               onChange={(e) => setForm((f) => ({ ...f, count: e.target.value }))}
               placeholder="0"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm tabular-nums text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm tabular-nums text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           </label>
           <div className="space-y-1">
-            <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Data categories</span>
+            <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Data categories</span>
             <div className="flex flex-wrap gap-2">
               {CATEGORY_OPTIONS.map((c) => {
                 const on = form.data_categories.includes(c)
@@ -430,7 +430,7 @@ export default function PopulationsPage() {
                     className={`rounded-full border px-2.5 py-1 text-xs font-medium transition-colors ${
                       on
                         ? 'border-red-700 bg-red-950/60 text-red-300'
-                        : 'border-zinc-700 bg-zinc-900 text-zinc-400 hover:border-zinc-600'
+                        : 'border-neutral-700 bg-neutral-900 text-neutral-400 hover:border-neutral-600'
                     }`}
                   >
                     {c}

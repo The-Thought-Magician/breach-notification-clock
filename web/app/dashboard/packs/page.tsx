@@ -139,8 +139,8 @@ export default function PacksPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-zinc-100">Defensibility Packs</h1>
-          <p className="mt-1 max-w-2xl text-sm text-zinc-500">
+          <h1 className="text-2xl font-bold text-neutral-100">Defensibility Packs</h1>
+          <p className="mt-1 max-w-2xl text-sm text-neutral-500">
             Immutable, hash-sealed snapshots of an incident&apos;s timeline, obligations, notices
             and deliveries. Generate one to evidence a defensible response to regulators.
           </p>
@@ -177,7 +177,7 @@ export default function PacksPage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search incidents..."
-          className="w-64 rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-200 placeholder-zinc-600 focus:border-red-600 focus:outline-none"
+          className="w-64 rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-1.5 text-sm text-neutral-200 placeholder-neutral-600 focus:border-red-600 focus:outline-none"
         />
       </div>
 
@@ -198,7 +198,7 @@ export default function PacksPage() {
                 <CardHeader className="flex flex-wrap items-center gap-3">
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="truncate font-semibold text-zinc-100">{inc.title}</span>
+                      <span className="truncate font-semibold text-neutral-100">{inc.title}</span>
                       {inc.is_drill && <Badge tone="blue">Drill</Badge>}
                       {inc.severity && (
                         <Badge tone={inc.severity === 'critical' || inc.severity === 'high' ? 'red' : 'zinc'}>
@@ -206,7 +206,7 @@ export default function PacksPage() {
                         </Badge>
                       )}
                     </div>
-                    <div className="mt-0.5 text-xs text-zinc-500">
+                    <div className="mt-0.5 text-xs text-neutral-500">
                       {inc.reference_number || inc.id} · {packs.length} pack
                       {packs.length === 1 ? '' : 's'}
                     </div>
@@ -222,23 +222,23 @@ export default function PacksPage() {
                 </CardHeader>
                 <CardBody className="p-0">
                   {packs.length === 0 ? (
-                    <div className="px-5 py-6 text-sm text-zinc-500">
+                    <div className="px-5 py-6 text-sm text-neutral-500">
                       No packs sealed for this incident yet.
                     </div>
                   ) : (
-                    <ul className="divide-y divide-zinc-800">
+                    <ul className="divide-y divide-neutral-800">
                       {packs.map((p, idx) => (
                         <li
                           key={p.id}
-                          className="flex flex-wrap items-center gap-3 px-5 py-3 hover:bg-zinc-900/50"
+                          className="flex flex-wrap items-center gap-3 px-5 py-3 hover:bg-neutral-900/50"
                         >
                           <Badge tone={idx === 0 ? 'green' : 'zinc'}>
                             {idx === 0 ? 'Latest' : `v${packs.length - idx}`}
                           </Badge>
-                          <code className="rounded bg-zinc-950 px-2 py-0.5 font-mono text-xs text-zinc-400">
+                          <code className="rounded bg-neutral-950 px-2 py-0.5 font-mono text-xs text-neutral-400">
                             {shortHash(p.integrity_hash)}
                           </code>
-                          <span className="text-xs text-zinc-500">{fmtDate(p.created_at)}</span>
+                          <span className="text-xs text-neutral-500">{fmtDate(p.created_at)}</span>
                           <Button
                             className="ml-auto"
                             variant="ghost"
@@ -275,22 +275,22 @@ export default function PacksPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div>
-                <div className="text-xs uppercase tracking-wide text-zinc-500">Integrity hash</div>
-                <code className="mt-1 block break-all rounded bg-zinc-950 px-2 py-1 font-mono text-xs text-emerald-400">
+                <div className="text-xs uppercase tracking-wide text-neutral-500">Integrity hash</div>
+                <code className="mt-1 block break-all rounded bg-neutral-950 px-2 py-1 font-mono text-xs text-emerald-400">
                   {viewPack.integrity_hash}
                 </code>
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wide text-zinc-500">Generated</div>
-                <div className="mt-1 text-sm text-zinc-300">{fmtDate(viewPack.created_at)}</div>
-                <div className="mt-1 text-xs text-zinc-500">by {viewPack.generated_by}</div>
+                <div className="text-xs uppercase tracking-wide text-neutral-500">Generated</div>
+                <div className="mt-1 text-sm text-neutral-300">{fmtDate(viewPack.created_at)}</div>
+                <div className="mt-1 text-xs text-neutral-500">by {viewPack.generated_by}</div>
               </div>
             </div>
             <div>
-              <div className="mb-1 text-xs uppercase tracking-wide text-zinc-500">
+              <div className="mb-1 text-xs uppercase tracking-wide text-neutral-500">
                 Sealed snapshot
               </div>
-              <pre className="max-h-[50vh] overflow-auto rounded-lg border border-zinc-800 bg-zinc-950 p-3 text-xs leading-relaxed text-zinc-300">
+              <pre className="max-h-[50vh] overflow-auto rounded-lg border border-neutral-800 bg-neutral-950 p-3 text-xs leading-relaxed text-neutral-300">
                 {JSON.stringify(viewPack.snapshot ?? {}, null, 2)}
               </pre>
             </div>

@@ -165,8 +165,8 @@ export default function SettingsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-zinc-100">Settings</h1>
-        <p className="mt-1 text-sm text-zinc-500">
+        <h1 className="text-2xl font-bold text-neutral-100">Settings</h1>
+        <p className="mt-1 text-sm text-neutral-500">
           Account, plan, and billing for your breach-notification program.
         </p>
       </div>
@@ -193,17 +193,17 @@ export default function SettingsPage() {
       {/* Account */}
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-zinc-200">Account</h2>
+          <h2 className="text-sm font-semibold text-neutral-200">Account</h2>
         </CardHeader>
         <CardBody className="space-y-4">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <Row label="Name" value={user?.name || '—'} />
             <Row label="Email" value={user?.email || '—'} />
           </div>
-          <div className="flex items-center justify-between border-t border-zinc-800 pt-4">
+          <div className="flex items-center justify-between border-t border-neutral-800 pt-4">
             <div>
-              <div className="text-sm font-medium text-zinc-200">Sign out</div>
-              <div className="text-xs text-zinc-500">End your session on this device.</div>
+              <div className="text-sm font-medium text-neutral-200">Sign out</div>
+              <div className="text-xs text-neutral-500">End your session on this device.</div>
             </div>
             <Button variant="secondary" onClick={handleSignOut} disabled={signingOut}>
               {signingOut ? 'Signing out...' : 'Sign out'}
@@ -215,7 +215,7 @@ export default function SettingsPage() {
       {/* Billing */}
       <Card>
         <CardHeader className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-zinc-200">Plan &amp; Billing</h2>
+          <h2 className="text-sm font-semibold text-neutral-200">Plan &amp; Billing</h2>
           {stripeEnabled ? (
             <Badge tone="green">Billing enabled</Badge>
           ) : (
@@ -235,27 +235,27 @@ export default function SettingsPage() {
           )}
 
           {/* Plan summary */}
-          <div className="rounded-xl border border-zinc-800 bg-zinc-950/60 p-5">
+          <div className="rounded-xl border border-neutral-800 bg-neutral-950/60 p-5">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-lg font-semibold text-zinc-100">{plan?.name ?? 'Free'}</span>
+                  <span className="text-lg font-semibold text-neutral-100">{plan?.name ?? 'Free'}</span>
                   {sub?.status && <Badge tone={statusTone(sub.status)}>{sub.status}</Badge>}
                 </div>
-                <div className="mt-1 text-sm text-zinc-400">{fmtPrice(plan?.price_cents)}</div>
+                <div className="mt-1 text-sm text-neutral-400">{fmtPrice(plan?.price_cents)}</div>
               </div>
-              <div className="text-right text-xs text-zinc-500">
+              <div className="text-right text-xs text-neutral-500">
                 {sub?.current_period_end && (
                   <div>
                     Renews/ends{' '}
-                    <span className="text-zinc-300">{fmtDate(sub.current_period_end)}</span>
+                    <span className="text-neutral-300">{fmtDate(sub.current_period_end)}</span>
                   </div>
                 )}
                 {sub?.created_at && <div className="mt-1">Started {fmtDate(sub.created_at)}</div>}
               </div>
             </div>
 
-            <dl className="mt-5 grid grid-cols-1 gap-3 border-t border-zinc-800 pt-4 sm:grid-cols-2">
+            <dl className="mt-5 grid grid-cols-1 gap-3 border-t border-neutral-800 pt-4 sm:grid-cols-2">
               <Row label="Stripe customer" value={sub?.stripe_customer_id || '—'} mono />
               <Row label="Stripe subscription" value={sub?.stripe_subscription_id || '—'} mono />
               <Row label="Status" value={sub?.status || 'No active subscription'} />
@@ -287,7 +287,7 @@ export default function SettingsPage() {
           </div>
 
           {!stripeEnabled && (
-            <p className="text-xs text-zinc-500">
+            <p className="text-xs text-neutral-500">
               Stripe is not configured for this deployment. Checkout and the billing portal will return a
               service-unavailable response until billing keys are set. All features remain available.
             </p>
@@ -298,10 +298,10 @@ export default function SettingsPage() {
       {/* What you get */}
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-zinc-200">Included in your plan</h2>
+          <h2 className="text-sm font-semibold text-neutral-200">Included in your plan</h2>
         </CardHeader>
         <CardBody>
-          <ul className="grid grid-cols-1 gap-2 text-sm text-zinc-300 sm:grid-cols-2">
+          <ul className="grid grid-cols-1 gap-2 text-sm text-neutral-300 sm:grid-cols-2">
             {[
               'Unlimited breach incidents',
               'Multi-jurisdiction obligation engine',
@@ -325,8 +325,8 @@ export default function SettingsPage() {
 function Row({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
   return (
     <div>
-      <dt className="text-xs font-medium uppercase tracking-wide text-zinc-500">{label}</dt>
-      <dd className={`mt-1 text-sm text-zinc-200 ${mono ? 'font-mono break-all text-xs' : ''}`}>{value}</dd>
+      <dt className="text-xs font-medium uppercase tracking-wide text-neutral-500">{label}</dt>
+      <dd className={`mt-1 text-sm text-neutral-200 ${mono ? 'font-mono break-all text-xs' : ''}`}>{value}</dd>
     </div>
   )
 }

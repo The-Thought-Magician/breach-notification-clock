@@ -5,9 +5,9 @@ interface SpinnerProps {
 
 export function Spinner({ className = '', label }: SpinnerProps) {
   return (
-    <span className="inline-flex items-center gap-2 text-zinc-400">
+    <span className="inline-flex items-center gap-2 text-neutral-400">
       <span
-        className={`h-4 w-4 animate-spin rounded-full border-2 border-zinc-700 border-t-red-500 ${className}`}
+        className={`h-4 w-4 animate-spin rounded-full border-2 border-neutral-700 border-t-sky-500 ${className}`}
         role="status"
         aria-label={label ?? 'Loading'}
       />

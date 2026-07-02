@@ -220,8 +220,8 @@ export default function ContractsPage() {
     <div className="mx-auto max-w-6xl space-y-6 pb-16">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-zinc-100">Customer DPA registry</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-2xl font-bold text-neutral-100">Customer DPA registry</h1>
+          <p className="mt-1 text-sm text-neutral-500">
             Track per-customer data processing agreements and their contractual breach-notification
             windows. These feed the contractual obligation engine when an incident is recomputed.
           </p>
@@ -263,13 +263,13 @@ export default function ContractsPage() {
           {stats.total > 0 && (
             <Card>
               <CardHeader>
-                <h2 className="text-sm font-semibold text-zinc-200">Notification window distribution</h2>
+                <h2 className="text-sm font-semibold text-neutral-200">Notification window distribution</h2>
               </CardHeader>
               <CardBody className="space-y-3">
                 {distribution.counts.map((b) => (
                   <div key={b.label} className="flex items-center gap-3">
-                    <div className="w-16 shrink-0 text-xs text-zinc-400">{b.label}</div>
-                    <div className="h-5 flex-1 overflow-hidden rounded bg-zinc-800/60">
+                    <div className="w-16 shrink-0 text-xs text-neutral-400">{b.label}</div>
+                    <div className="h-5 flex-1 overflow-hidden rounded bg-neutral-800/60">
                       <div
                         className={
                           b.tone === 'red'
@@ -283,7 +283,7 @@ export default function ContractsPage() {
                         style={{ width: `${(b.count / distribution.max) * 100}%` }}
                       />
                     </div>
-                    <div className="w-8 shrink-0 text-right text-xs tabular-nums text-zinc-300">
+                    <div className="w-8 shrink-0 text-right text-xs tabular-nums text-neutral-300">
                       {b.count}
                     </div>
                   </div>
@@ -298,12 +298,12 @@ export default function ContractsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search customer, DPA reference, or contact…"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none sm:max-w-xs"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none sm:max-w-xs"
             />
             <select
               value={anchorFilter}
               onChange={(e) => setAnchorFilter(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
             >
               <option value="all">All clock anchors</option>
               {CLOCK_ANCHORS.map((a) => (
@@ -315,12 +315,12 @@ export default function ContractsPage() {
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as 'name' | 'tightest')}
-              className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
             >
               <option value="tightest">Sort: tightest window</option>
               <option value="name">Sort: customer name</option>
             </select>
-            <div className="text-xs text-zinc-500 sm:ml-auto">
+            <div className="text-xs text-neutral-500 sm:ml-auto">
               {filtered.length} of {contracts.length}
             </div>
           </div>
@@ -364,18 +364,18 @@ export default function ContractsPage() {
               <TBody>
                 {filtered.map((c) => (
                   <TR key={c.id}>
-                    <TD className="font-medium text-zinc-100">
+                    <TD className="font-medium text-neutral-100">
                       {c.customer_name}
                       {c.notes && (
-                        <div className="mt-0.5 max-w-xs truncate text-xs text-zinc-500">{c.notes}</div>
+                        <div className="mt-0.5 max-w-xs truncate text-xs text-neutral-500">{c.notes}</div>
                       )}
                     </TD>
-                    <TD className="text-zinc-400">{c.dpa_reference || '—'}</TD>
+                    <TD className="text-neutral-400">{c.dpa_reference || '—'}</TD>
                     <TD>
                       <Badge tone={hoursTone(c.notify_within_hours)}>{c.notify_within_hours}h</Badge>
                     </TD>
-                    <TD className="capitalize text-zinc-300">{c.clock_anchor.replace(/_/g, ' ')}</TD>
-                    <TD className="text-zinc-400">
+                    <TD className="capitalize text-neutral-300">{c.clock_anchor.replace(/_/g, ' ')}</TD>
+                    <TD className="text-neutral-400">
                       {c.contact_email ? (
                         <a
                           href={`mailto:${c.contact_email}`}
@@ -387,7 +387,7 @@ export default function ContractsPage() {
                         '—'
                       )}
                     </TD>
-                    <TD className="text-zinc-400">{fmt(c.updated_at)}</TD>
+                    <TD className="text-neutral-400">{fmt(c.updated_at)}</TD>
                     <TD className="text-right">
                       <div className="flex justify-end gap-1">
                         <Button variant="ghost" size="sm" onClick={() => openEdit(c)}>
@@ -429,30 +429,30 @@ export default function ContractsPage() {
             </div>
           )}
           <div>
-            <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">
+            <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
               Customer name
             </label>
             <input
               value={form.customer_name}
               onChange={(e) => setForm((f) => ({ ...f, customer_name: e.target.value }))}
               placeholder="Acme Corp"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
             />
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">
+              <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
                 DPA reference
               </label>
               <input
                 value={form.dpa_reference}
                 onChange={(e) => setForm((f) => ({ ...f, dpa_reference: e.target.value }))}
                 placeholder="DPA-2025-014"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">
+              <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
                 Contact email
               </label>
               <input
@@ -460,11 +460,11 @@ export default function ContractsPage() {
                 value={form.contact_email}
                 onChange={(e) => setForm((f) => ({ ...f, contact_email: e.target.value }))}
                 placeholder="security@acme.com"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">
+              <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
                 Notify within (hours)
               </label>
               <input
@@ -472,17 +472,17 @@ export default function ContractsPage() {
                 min={1}
                 value={form.notify_within_hours}
                 onChange={(e) => setForm((f) => ({ ...f, notify_within_hours: e.target.value }))}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">
+              <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
                 Clock anchor
               </label>
               <select
                 value={form.clock_anchor}
                 onChange={(e) => setForm((f) => ({ ...f, clock_anchor: e.target.value }))}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
               >
                 {CLOCK_ANCHORS.map((a) => (
                   <option key={a} value={a}>
@@ -493,13 +493,13 @@ export default function ContractsPage() {
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">Notes</label>
+            <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">Notes</label>
             <textarea
               value={form.notes}
               onChange={(e) => setForm((f) => ({ ...f, notes: e.target.value }))}
               rows={3}
               placeholder="Escalation path, account owner, special terms…"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
             />
           </div>
         </form>
@@ -521,9 +521,9 @@ export default function ContractsPage() {
           </>
         }
       >
-        <p className="text-sm text-zinc-300">
+        <p className="text-sm text-neutral-300">
           Delete the DPA for{' '}
-          <span className="font-medium text-zinc-100">{deleteTarget?.customer_name}</span>? This does
+          <span className="font-medium text-neutral-100">{deleteTarget?.customer_name}</span>? This does
           not affect contractual obligations already attached to past incidents.
         </p>
       </Modal>

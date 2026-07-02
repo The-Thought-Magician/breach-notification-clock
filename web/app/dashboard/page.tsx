@@ -177,8 +177,8 @@ export default function DashboardPage() {
     <div className="space-y-8">
       <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-zinc-100">Breach Notification Clock</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-2xl font-bold text-neutral-100">Breach Notification Clock</h1>
+          <p className="mt-1 text-sm text-neutral-500">
             Program overview — soonest regulatory and contractual deadlines across every open incident.
           </p>
         </div>
@@ -202,15 +202,15 @@ export default function DashboardPage() {
           soonestMs !== null && soonestMs < 0
             ? 'border-red-700 bg-red-950/30'
             : band(soonestMs) === 'red'
-              ? 'border-red-800 bg-gradient-to-br from-red-950/40 to-zinc-900'
+              ? 'border-red-800 bg-gradient-to-br from-red-950/40 to-neutral-900'
               : band(soonestMs) === 'amber'
-                ? 'border-amber-800 bg-gradient-to-br from-amber-950/30 to-zinc-900'
+                ? 'border-amber-800 bg-gradient-to-br from-amber-950/30 to-neutral-900'
                 : ''
         }
       >
         <CardBody className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <div className="text-xs font-medium uppercase tracking-wide text-zinc-500">Next deadline</div>
+            <div className="text-xs font-medium uppercase tracking-wide text-neutral-500">Next deadline</div>
             {soonest ? (
               <>
                 <div
@@ -221,19 +221,19 @@ export default function DashboardPage() {
                         ? 'text-red-400'
                         : band(soonestMs) === 'amber'
                           ? 'text-amber-400'
-                          : 'text-zinc-100'
+                          : 'text-neutral-100'
                   }`}
                 >
                   {formatRemaining(soonestMs)}
                 </div>
-                <div className="mt-1 text-sm text-zinc-400">
+                <div className="mt-1 text-sm text-neutral-400">
                   {soonest.recipient || soonest.recipient_type || 'Recipient'}
                   {soonest.jurisdiction_code ? ` · ${soonest.jurisdiction_code}` : ''}
                   {soonest.deadline_at ? ` · due ${new Date(soonest.deadline_at).toLocaleString()}` : ''}
                 </div>
               </>
             ) : (
-              <div className="mt-1 text-2xl font-bold text-zinc-500">No active deadlines</div>
+              <div className="mt-1 text-2xl font-bold text-neutral-500">No active deadlines</div>
             )}
           </div>
           {soonest && (soonest.incident_id || soonest.incidentId) && (
@@ -256,7 +256,7 @@ export default function DashboardPage() {
       {upcoming.length > 0 && (
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-zinc-200">Deadline pressure</h2>
+            <h2 className="text-sm font-semibold text-neutral-200">Deadline pressure</h2>
           </CardHeader>
           <CardBody>
             <BandBar overdue={overdue} red={red} amber={amber} green={Math.max(upcoming.length - overdue - red - amber, 0)} />
@@ -268,8 +268,8 @@ export default function DashboardPage() {
         {/* Soonest deadlines */}
         <Card>
           <CardHeader className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-zinc-200">Soonest deadlines</h2>
-            <span className="text-xs text-zinc-500">{upcoming.length} obligations</span>
+            <h2 className="text-sm font-semibold text-neutral-200">Soonest deadlines</h2>
+            <span className="text-xs text-neutral-500">{upcoming.length} obligations</span>
           </CardHeader>
           <CardBody className="!p-0">
             {upcoming.length === 0 ? (
@@ -301,7 +301,7 @@ export default function DashboardPage() {
                     const recipientLabel = o.recipient || o.recipient_type || '—'
                     return (
                       <TR key={o.id}>
-                        <TD className="font-medium text-zinc-100">
+                        <TD className="font-medium text-neutral-100">
                           <Link href={`/dashboard/obligations/${o.id}`} className="hover:text-red-300">
                             {recipientLabel}
                           </Link>
@@ -310,13 +310,13 @@ export default function DashboardPage() {
                           )}
                         </TD>
                         <TD>
-                          <span className="font-mono text-xs text-zinc-400">{o.jurisdiction_code || '—'}</span>
+                          <span className="font-mono text-xs text-neutral-400">{o.jurisdiction_code || '—'}</span>
                         </TD>
                         <TD>
                           <Badge tone={BAND_TONE[b]}>{formatRemaining(ms)}</Badge>
                         </TD>
                         <TD>
-                          <span className="text-xs capitalize text-zinc-400">{o.status || 'pending'}</span>
+                          <span className="text-xs capitalize text-neutral-400">{o.status || 'pending'}</span>
                         </TD>
                       </TR>
                     )
@@ -330,7 +330,7 @@ export default function DashboardPage() {
         {/* Open incidents */}
         <Card>
           <CardHeader className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-zinc-200">Open incidents</h2>
+            <h2 className="text-sm font-semibold text-neutral-200">Open incidents</h2>
             <Link href="/dashboard/incidents" className="text-xs text-red-400 hover:text-red-300">
               View all →
             </Link>
@@ -361,10 +361,10 @@ export default function DashboardPage() {
                   {incidents.slice(0, 12).map((i) => (
                     <TR key={i.id}>
                       <TD>
-                        <Link href={`/dashboard/incidents/${i.id}`} className="font-medium text-zinc-100 hover:text-red-300">
+                        <Link href={`/dashboard/incidents/${i.id}`} className="font-medium text-neutral-100 hover:text-red-300">
                           {i.title}
                         </Link>
-                        <div className="mt-0.5 flex items-center gap-2 text-xs text-zinc-500">
+                        <div className="mt-0.5 flex items-center gap-2 text-xs text-neutral-500">
                           {i.reference_number && <span className="font-mono">{i.reference_number}</span>}
                           {i.is_drill && <Badge tone="blue">drill</Badge>}
                         </div>
@@ -391,7 +391,7 @@ export default function DashboardPage() {
 
 function BandBar({ overdue, red, amber, green }: { overdue: number; red: number; amber: number; green: number }) {
   const total = overdue + red + amber + green
-  if (total === 0) return <p className="text-sm text-zinc-500">No obligations to band.</p>
+  if (total === 0) return <p className="text-sm text-neutral-500">No obligations to band.</p>
   const seg = (n: number, cls: string, label: string) =>
     n > 0 ? (
       <div
@@ -404,13 +404,13 @@ function BandBar({ overdue, red, amber, green }: { overdue: number; red: number;
     ) : null
   return (
     <div className="space-y-3">
-      <div className="flex h-6 w-full overflow-hidden rounded-full border border-zinc-800">
+      <div className="flex h-6 w-full overflow-hidden rounded-full border border-neutral-800">
         {seg(overdue, 'bg-red-600', 'Overdue')}
         {seg(red, 'bg-red-500', 'Due ≤ 24h')}
         {seg(amber, 'bg-amber-500', 'Due ≤ 72h')}
         {seg(green, 'bg-emerald-600', 'On track')}
       </div>
-      <div className="flex flex-wrap gap-4 text-xs text-zinc-400">
+      <div className="flex flex-wrap gap-4 text-xs text-neutral-400">
         <LegendDot cls="bg-red-600" label={`Overdue ${overdue}`} />
         <LegendDot cls="bg-red-500" label={`≤ 24h ${red}`} />
         <LegendDot cls="bg-amber-500" label={`≤ 72h ${amber}`} />

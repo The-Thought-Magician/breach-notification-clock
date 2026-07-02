@@ -26,10 +26,10 @@ interface FieldProps {
 function Field({ label, hint, required, children }: FieldProps) {
   return (
     <label className="block">
-      <span className="mb-1.5 flex items-baseline gap-1 text-sm font-medium text-zinc-300">
+      <span className="mb-1.5 flex items-baseline gap-1 text-sm font-medium text-neutral-300">
         {label}
         {required && <span className="text-red-500">*</span>}
-        {hint && <span className="ml-auto text-xs font-normal text-zinc-600">{hint}</span>}
+        {hint && <span className="ml-auto text-xs font-normal text-neutral-600">{hint}</span>}
       </span>
       {children}
     </label>
@@ -37,7 +37,7 @@ function Field({ label, hint, required, children }: FieldProps) {
 }
 
 const inputCls =
-  'w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500'
+  'w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 placeholder-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500'
 
 export default function NewIncidentPage() {
   const router = useRouter()
@@ -85,11 +85,11 @@ export default function NewIncidentPage() {
   return (
     <div className="mx-auto max-w-2xl space-y-6">
       <header>
-        <Link href="/dashboard/incidents" className="text-xs text-zinc-500 hover:text-zinc-300">
+        <Link href="/dashboard/incidents" className="text-xs text-neutral-500 hover:text-neutral-300">
           ← Back to incidents
         </Link>
-        <h1 className="mt-2 text-2xl font-bold text-zinc-100">Log a new incident</h1>
-        <p className="mt-1 text-sm text-zinc-500">
+        <h1 className="mt-2 text-2xl font-bold text-neutral-100">Log a new incident</h1>
+        <p className="mt-1 text-sm text-neutral-500">
           Start the notification clock. You can add anchors, facts, and affected populations after creation.
         </p>
       </header>
@@ -101,7 +101,7 @@ export default function NewIncidentPage() {
       <form onSubmit={handleSubmit}>
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-zinc-200">Incident details</h2>
+            <h2 className="text-sm font-semibold text-neutral-200">Incident details</h2>
           </CardHeader>
           <CardBody className="space-y-5">
             <Field label="Title" required>
@@ -133,7 +133,7 @@ export default function NewIncidentPage() {
                     className={`rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
                       severity === opt.value
                         ? opt.tone
-                        : 'border-zinc-700 bg-zinc-950 text-zinc-400 hover:border-zinc-600'
+                        : 'border-neutral-700 bg-neutral-950 text-neutral-400 hover:border-neutral-600'
                     }`}
                   >
                     {opt.label}
@@ -162,17 +162,17 @@ export default function NewIncidentPage() {
               />
             </Field>
 
-            <div className="space-y-3 rounded-lg border border-zinc-800 bg-zinc-950/50 p-4">
+            <div className="space-y-3 rounded-lg border border-neutral-800 bg-neutral-950/50 p-4">
               <label className="flex cursor-pointer items-start gap-3">
                 <input
                   type="checkbox"
                   checked={isDrill}
                   onChange={(e) => setIsDrill(e.target.checked)}
-                  className="mt-0.5 h-4 w-4 rounded border-zinc-600 bg-zinc-950 accent-red-600"
+                  className="mt-0.5 h-4 w-4 rounded border-neutral-600 bg-neutral-950 accent-red-600"
                 />
                 <span>
-                  <span className="block text-sm font-medium text-zinc-200">Tabletop drill</span>
-                  <span className="block text-xs text-zinc-500">
+                  <span className="block text-sm font-medium text-neutral-200">Tabletop drill</span>
+                  <span className="block text-xs text-neutral-500">
                     Mark as a practice exercise. Drills are excluded from real deadline counts.
                   </span>
                 </span>
@@ -182,11 +182,11 @@ export default function NewIncidentPage() {
                   type="checkbox"
                   checked={isConfidential}
                   onChange={(e) => setIsConfidential(e.target.checked)}
-                  className="mt-0.5 h-4 w-4 rounded border-zinc-600 bg-zinc-950 accent-red-600"
+                  className="mt-0.5 h-4 w-4 rounded border-neutral-600 bg-neutral-950 accent-red-600"
                 />
                 <span>
-                  <span className="block text-sm font-medium text-zinc-200">Privileged / confidential</span>
-                  <span className="block text-xs text-zinc-500">
+                  <span className="block text-sm font-medium text-neutral-200">Privileged / confidential</span>
+                  <span className="block text-xs text-neutral-500">
                     Flag work product as confidential for legal-privilege handling.
                   </span>
                 </span>

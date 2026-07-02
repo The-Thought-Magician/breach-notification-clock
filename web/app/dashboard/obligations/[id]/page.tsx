@@ -127,7 +127,7 @@ const bandColor: Record<Remaining['band'], string> = {
   critical: 'text-red-400',
   warning: 'text-amber-400',
   ok: 'text-emerald-400',
-  none: 'text-zinc-400',
+  none: 'text-neutral-400',
 }
 
 export default function ObligationDetailPage() {
@@ -268,7 +268,7 @@ export default function ObligationDetailPage() {
         <Card className="border-red-900/60">
           <CardBody>
             <h2 className="text-lg font-semibold text-red-300">Could not load obligation</h2>
-            <p className="mt-1 text-sm text-zinc-400">{error}</p>
+            <p className="mt-1 text-sm text-neutral-400">{error}</p>
             <div className="mt-4 flex gap-2">
               <Button onClick={load}>Retry</Button>
               <Button variant="secondary" onClick={() => router.back()}>
@@ -290,21 +290,21 @@ export default function ObligationDetailPage() {
       {/* breadcrumb / header */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <div className="flex items-center gap-2 text-xs text-zinc-500">
-            <Link href="/dashboard/incidents" className="hover:text-zinc-300">
+          <div className="flex items-center gap-2 text-xs text-neutral-500">
+            <Link href="/dashboard/incidents" className="hover:text-neutral-300">
               Incidents
             </Link>
             <span>/</span>
             <Link
               href={`/dashboard/incidents/${obligation.incident_id}`}
-              className="hover:text-zinc-300"
+              className="hover:text-neutral-300"
             >
               Incident
             </Link>
             <span>/</span>
-            <span className="text-zinc-400">Obligation</span>
+            <span className="text-neutral-400">Obligation</span>
           </div>
-          <h1 className="mt-1 text-2xl font-bold text-zinc-100">{obligation.recipient}</h1>
+          <h1 className="mt-1 text-2xl font-bold text-neutral-100">{obligation.recipient}</h1>
           <div className="mt-2 flex flex-wrap items-center gap-2">
             <Badge tone={statusTone(obligation.status)}>{obligation.status.replace(/_/g, ' ')}</Badge>
             <Badge tone="zinc">{recipientLabel}</Badge>
@@ -341,13 +341,13 @@ export default function ObligationDetailPage() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Card className="sm:col-span-1">
           <CardBody>
-            <div className="text-xs font-medium uppercase tracking-wide text-zinc-500">
+            <div className="text-xs font-medium uppercase tracking-wide text-neutral-500">
               Time remaining
             </div>
             <div className={`mt-2 font-mono text-2xl font-bold tabular-nums ${rem ? bandColor[rem.band] : ''}`}>
               {rem?.label ?? '—'}
             </div>
-            <div className="mt-1 text-xs text-zinc-500">Deadline {fmt(obligation.deadline_at)}</div>
+            <div className="mt-1 text-xs text-neutral-500">Deadline {fmt(obligation.deadline_at)}</div>
           </CardBody>
         </Card>
         <Stat label="Clock anchor" value={obligation.clock_anchor ?? '—'} />
@@ -358,28 +358,28 @@ export default function ObligationDetailPage() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <Card className="lg:col-span-2">
           <CardHeader>
-            <h2 className="text-sm font-semibold text-zinc-200">Why this obligation triggered</h2>
+            <h2 className="text-sm font-semibold text-neutral-200">Why this obligation triggered</h2>
           </CardHeader>
           <CardBody>
-            <p className="whitespace-pre-wrap text-sm text-zinc-300">
+            <p className="whitespace-pre-wrap text-sm text-neutral-300">
               {obligation.why_triggered || 'No trigger rationale recorded.'}
             </p>
             <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
               <div>
-                <dt className="text-xs uppercase tracking-wide text-zinc-500">Recipient type</dt>
-                <dd className="mt-0.5 text-zinc-200">{recipientLabel}</dd>
+                <dt className="text-xs uppercase tracking-wide text-neutral-500">Recipient type</dt>
+                <dd className="mt-0.5 text-neutral-200">{recipientLabel}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-wide text-zinc-500">Jurisdiction</dt>
-                <dd className="mt-0.5 text-zinc-200">{obligation.jurisdiction_code ?? '—'}</dd>
+                <dt className="text-xs uppercase tracking-wide text-neutral-500">Jurisdiction</dt>
+                <dd className="mt-0.5 text-neutral-200">{obligation.jurisdiction_code ?? '—'}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-wide text-zinc-500">Source</dt>
-                <dd className="mt-0.5 text-zinc-200">{obligation.source}</dd>
+                <dt className="text-xs uppercase tracking-wide text-neutral-500">Source</dt>
+                <dd className="mt-0.5 text-neutral-200">{obligation.source}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-wide text-zinc-500">Created</dt>
-                <dd className="mt-0.5 text-zinc-200">{fmt(obligation.created_at)}</dd>
+                <dt className="text-xs uppercase tracking-wide text-neutral-500">Created</dt>
+                <dd className="mt-0.5 text-neutral-200">{fmt(obligation.created_at)}</dd>
               </div>
             </dl>
           </CardBody>
@@ -387,18 +387,18 @@ export default function ObligationDetailPage() {
 
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-zinc-200">Manage</h2>
+            <h2 className="text-sm font-semibold text-neutral-200">Manage</h2>
           </CardHeader>
           <CardBody className="space-y-4">
             <div>
-              <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">
+              <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
                 Status
               </label>
               <select
                 value={obligation.status}
                 disabled={savingMeta}
                 onChange={(e) => changeStatus(e.target.value)}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none disabled:opacity-50"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none disabled:opacity-50"
               >
                 {OBLIGATION_STATUSES.map((s) => (
                   <option key={s} value={s}>
@@ -408,7 +408,7 @@ export default function ObligationDetailPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">
+              <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
                 Owner
               </label>
               <input
@@ -419,11 +419,11 @@ export default function ObligationDetailPage() {
                   const v = e.target.value.trim()
                   if (v !== (obligation.owner_id ?? '')) saveOwner(v)
                 }}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none disabled:opacity-50"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none disabled:opacity-50"
               />
-              <p className="mt-1 text-[11px] text-zinc-500">Saved on blur.</p>
+              <p className="mt-1 text-[11px] text-neutral-500">Saved on blur.</p>
             </div>
-            {savingMeta && <div className="text-xs text-zinc-500">Saving…</div>}
+            {savingMeta && <div className="text-xs text-neutral-500">Saving…</div>}
           </CardBody>
         </Card>
       </div>
@@ -431,7 +431,7 @@ export default function ObligationDetailPage() {
       {/* artifacts */}
       <Card>
         <CardHeader className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-zinc-200">Notice artifacts</h2>
+          <h2 className="text-sm font-semibold text-neutral-200">Notice artifacts</h2>
           <Button size="sm" onClick={() => setCreateOpen(true)}>
             + New artifact
           </Button>
@@ -458,13 +458,13 @@ export default function ObligationDetailPage() {
               <TBody>
                 {artifacts.map((a) => (
                   <TR key={a.id}>
-                    <TD className="font-medium text-zinc-100">{a.title}</TD>
+                    <TD className="font-medium text-neutral-100">{a.title}</TD>
                     <TD>
                       <Badge tone={statusTone(a.status)}>{a.status.replace(/_/g, ' ')}</Badge>
                     </TD>
                     <TD>{a.delivery_channel ?? '—'}</TD>
                     <TD>{a.recipient_detail ?? '—'}</TD>
-                    <TD className="text-zinc-400">{fmt(a.updated_at)}</TD>
+                    <TD className="text-neutral-400">{fmt(a.updated_at)}</TD>
                     <TD className="text-right">
                       <Link href={`/dashboard/artifacts/${a.id}`}>
                         <Button variant="ghost" size="sm">
@@ -483,20 +483,20 @@ export default function ObligationDetailPage() {
       {/* comments */}
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-zinc-200">Discussion</h2>
+          <h2 className="text-sm font-semibold text-neutral-200">Discussion</h2>
         </CardHeader>
         <CardBody className="space-y-4">
           {comments.length === 0 ? (
-            <p className="text-sm text-zinc-500">No comments yet. Start the discussion below.</p>
+            <p className="text-sm text-neutral-500">No comments yet. Start the discussion below.</p>
           ) : (
             <ul className="space-y-3">
               {comments.map((c) => (
-                <li key={c.id} className="rounded-lg border border-zinc-800 bg-zinc-950/40 px-4 py-3">
-                  <div className="flex items-center justify-between text-xs text-zinc-500">
-                    <span className="font-medium text-zinc-400">{c.author_id}</span>
+                <li key={c.id} className="rounded-lg border border-neutral-800 bg-neutral-950/40 px-4 py-3">
+                  <div className="flex items-center justify-between text-xs text-neutral-500">
+                    <span className="font-medium text-neutral-400">{c.author_id}</span>
                     <span>{fmt(c.created_at)}</span>
                   </div>
-                  <p className="mt-1 whitespace-pre-wrap text-sm text-zinc-200">{c.body}</p>
+                  <p className="mt-1 whitespace-pre-wrap text-sm text-neutral-200">{c.body}</p>
                 </li>
               ))}
             </ul>
@@ -507,7 +507,7 @@ export default function ObligationDetailPage() {
               onChange={(e) => setCommentBody(e.target.value)}
               rows={3}
               placeholder="Add a comment. Use @userid to mention a teammate."
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
             />
             <div className="flex justify-end">
               <Button type="submit" size="sm" disabled={postingComment || !commentBody.trim()}>
@@ -541,33 +541,33 @@ export default function ObligationDetailPage() {
             </div>
           )}
           <div>
-            <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">Title</label>
+            <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">Title</label>
             <input
               value={artTitle}
               onChange={(e) => setArtTitle(e.target.value)}
               placeholder={`Notice to ${obligation.recipient}`}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">
+            <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
               Recipient detail
             </label>
             <input
               value={artRecipient}
               onChange={(e) => setArtRecipient(e.target.value)}
               placeholder="e.g. dpo@regulator.gov or portal reference"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">
+            <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
               Delivery channel
             </label>
             <select
               value={artChannel}
               onChange={(e) => setArtChannel(e.target.value)}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-200 focus:border-red-500 focus:outline-none"
             >
               <option value="portal">Portal</option>
               <option value="email">Email</option>

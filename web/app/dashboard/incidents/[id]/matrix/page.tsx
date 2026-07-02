@@ -58,7 +58,7 @@ const BAND_META: Record<Band, { label: string; tone: 'red' | 'amber' | 'green' |
   critical: { label: '< 24h', tone: 'red', rowBg: 'bg-red-950/20', bar: 'bg-red-500' },
   warning: { label: '< 72h', tone: 'amber', rowBg: 'bg-amber-950/15', bar: 'bg-amber-500' },
   ok: { label: 'On track', tone: 'green', rowBg: '', bar: 'bg-emerald-500' },
-  none: { label: 'No deadline', tone: 'zinc', rowBg: '', bar: 'bg-zinc-600' },
+  none: { label: 'No deadline', tone: 'zinc', rowBg: '', bar: 'bg-neutral-600' },
 }
 
 function fmtDeadline(s?: string | null): string {
@@ -274,20 +274,20 @@ export default function ObligationMatrixPage({ params }: { params: Promise<{ id:
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-3 border-b border-zinc-800 pb-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 border-b border-neutral-800 pb-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <div className="flex items-center gap-2 text-xs text-zinc-500">
-            <Link href="/dashboard/incidents" className="hover:text-zinc-300">
+          <div className="flex items-center gap-2 text-xs text-neutral-500">
+            <Link href="/dashboard/incidents" className="hover:text-neutral-300">
               Incidents
             </Link>
             <span>/</span>
-            <Link href={`/dashboard/incidents/${id}`} className="hover:text-zinc-300">
+            <Link href={`/dashboard/incidents/${id}`} className="hover:text-neutral-300">
               Detail
             </Link>
             <span>/</span>
-            <span className="text-zinc-400">Matrix</span>
+            <span className="text-neutral-400">Matrix</span>
           </div>
-          <h1 className="mt-1 text-2xl font-bold text-zinc-100">Obligation Matrix</h1>
+          <h1 className="mt-1 text-2xl font-bold text-neutral-100">Obligation Matrix</h1>
         </div>
         <div className="flex flex-wrap gap-2">
           <Button variant="secondary" size="sm" onClick={() => setSaveViewOpen(true)}>
@@ -316,18 +316,18 @@ export default function ObligationMatrixPage({ params }: { params: Promise<{ id:
       <Card>
         <CardBody className="flex flex-wrap items-end gap-3">
           <div className="min-w-[180px] flex-1">
-            <label className="mb-1 block text-xs font-medium text-zinc-400">Search</label>
+            <label className="mb-1 block text-xs font-medium text-neutral-400">Search</label>
             <input
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-600 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-600 focus:outline-none"
               placeholder="recipient, jurisdiction, reason..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">Status</label>
+            <label className="mb-1 block text-xs font-medium text-neutral-400">Status</label>
             <select
-              className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-600 focus:outline-none"
+              className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-600 focus:outline-none"
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
             >
@@ -340,9 +340,9 @@ export default function ObligationMatrixPage({ params }: { params: Promise<{ id:
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">Jurisdiction</label>
+            <label className="mb-1 block text-xs font-medium text-neutral-400">Jurisdiction</label>
             <select
-              className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-600 focus:outline-none"
+              className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-600 focus:outline-none"
               value={jurisdictionFilter}
               onChange={(e) => setJurisdictionFilter(e.target.value)}
             >
@@ -355,9 +355,9 @@ export default function ObligationMatrixPage({ params }: { params: Promise<{ id:
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">Band</label>
+            <label className="mb-1 block text-xs font-medium text-neutral-400">Band</label>
             <select
-              className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-600 focus:outline-none"
+              className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-600 focus:outline-none"
               value={bandFilter}
               onChange={(e) => setBandFilter(e.target.value)}
             >
@@ -378,15 +378,15 @@ export default function ObligationMatrixPage({ params }: { params: Promise<{ id:
       {/* Saved views */}
       {views.length > 0 && (
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs text-zinc-500">Saved views:</span>
+          <span className="text-xs text-neutral-500">Saved views:</span>
           {views.map((v) => (
             <button
               key={v.id}
               onClick={() => applyView(v)}
-              className="inline-flex items-center gap-1 rounded-full border border-zinc-700 bg-zinc-900 px-3 py-1 text-xs text-zinc-300 hover:border-red-700 hover:text-white"
+              className="inline-flex items-center gap-1 rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 text-xs text-neutral-300 hover:border-red-700 hover:text-white"
             >
               {v.name}
-              {v.is_shared && <span className="text-zinc-500">(shared)</span>}
+              {v.is_shared && <span className="text-neutral-500">(shared)</span>}
             </button>
           ))}
         </div>
@@ -395,9 +395,9 @@ export default function ObligationMatrixPage({ params }: { params: Promise<{ id:
       {/* Bulk bar */}
       {selected.size > 0 && (
         <div className="flex flex-wrap items-center gap-3 rounded-lg border border-red-800/60 bg-red-950/20 px-4 py-3">
-          <span className="text-sm font-medium text-zinc-200">{selected.size} selected</span>
+          <span className="text-sm font-medium text-neutral-200">{selected.size} selected</span>
           <select
-            className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-100 focus:border-red-600 focus:outline-none"
+            className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-1.5 text-sm text-neutral-100 focus:border-red-600 focus:outline-none"
             value={bulkStatus}
             onChange={(e) => setBulkStatus(e.target.value)}
           >
@@ -409,7 +409,7 @@ export default function ObligationMatrixPage({ params }: { params: Promise<{ id:
             ))}
           </select>
           <input
-            className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-100 focus:border-red-600 focus:outline-none"
+            className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-1.5 text-sm text-neutral-100 focus:border-red-600 focus:outline-none"
             placeholder="Set owner id…"
             value={bulkOwner}
             onChange={(e) => setBulkOwner(e.target.value)}
@@ -467,10 +467,10 @@ export default function ObligationMatrixPage({ params }: { params: Promise<{ id:
                     />
                   </TD>
                   <TD>
-                    <Link href={`/dashboard/obligations/${o.id}`} className="font-medium text-zinc-100 hover:text-red-400">
+                    <Link href={`/dashboard/obligations/${o.id}`} className="font-medium text-neutral-100 hover:text-red-400">
                       {o.recipient || 'Recipient'}
                     </Link>
-                    <div className="text-xs text-zinc-500">{o.recipient_type || ''}</div>
+                    <div className="text-xs text-neutral-500">{o.recipient_type || ''}</div>
                   </TD>
                   <TD>
                     <Badge tone="zinc">{o.jurisdiction_code || '—'}</Badge>
@@ -478,7 +478,7 @@ export default function ObligationMatrixPage({ params }: { params: Promise<{ id:
                   <TD>
                     <div className="flex items-center gap-2">
                       <span className={`inline-block h-2 w-2 rounded-full ${meta.bar}`} />
-                      <span className="text-xs text-zinc-300">{fmtDeadline(o.deadline_at)}</span>
+                      <span className="text-xs text-neutral-300">{fmtDeadline(o.deadline_at)}</span>
                     </div>
                     {o.is_undue_delay && <span className="text-[10px] uppercase text-amber-400">without undue delay</span>}
                   </TD>
@@ -487,7 +487,7 @@ export default function ObligationMatrixPage({ params }: { params: Promise<{ id:
                   </TD>
                   <TD>
                     <select
-                      className="rounded-md border border-zinc-700 bg-zinc-950 px-2 py-1 text-xs text-zinc-100 focus:border-red-600 focus:outline-none"
+                      className="rounded-md border border-neutral-700 bg-neutral-950 px-2 py-1 text-xs text-neutral-100 focus:border-red-600 focus:outline-none"
                       value={o.status ?? 'pending'}
                       onChange={(e) => updateOne(o.id, { status: e.target.value })}
                     >
@@ -500,7 +500,7 @@ export default function ObligationMatrixPage({ params }: { params: Promise<{ id:
                   </TD>
                   <TD>
                     <input
-                      className="w-28 rounded-md border border-zinc-700 bg-zinc-950 px-2 py-1 text-xs text-zinc-100 focus:border-red-600 focus:outline-none"
+                      className="w-28 rounded-md border border-neutral-700 bg-neutral-950 px-2 py-1 text-xs text-neutral-100 focus:border-red-600 focus:outline-none"
                       placeholder="unassigned"
                       defaultValue={o.owner_id ?? ''}
                       onBlur={(e) => {
@@ -510,7 +510,7 @@ export default function ObligationMatrixPage({ params }: { params: Promise<{ id:
                     />
                   </TD>
                   <TD className="max-w-[220px]">
-                    <span className="block truncate text-xs text-zinc-500" title={o.why_triggered ?? ''}>
+                    <span className="block truncate text-xs text-neutral-500" title={o.why_triggered ?? ''}>
                       {o.why_triggered || '—'}
                     </span>
                   </TD>
@@ -538,16 +538,16 @@ export default function ObligationMatrixPage({ params }: { params: Promise<{ id:
         }
       >
         <div className="space-y-4">
-          <p className="text-xs text-zinc-500">Saves the current filters (search, status, jurisdiction, band) as a reusable view.</p>
+          <p className="text-xs text-neutral-500">Saves the current filters (search, status, jurisdiction, band) as a reusable view.</p>
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">View Name</label>
+            <label className="mb-1 block text-xs font-medium text-neutral-400">View Name</label>
             <input
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-600 focus:outline-none"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-600 focus:outline-none"
               value={viewName}
               onChange={(e) => setViewName(e.target.value)}
             />
           </div>
-          <label className="flex items-center gap-2 text-sm text-zinc-300">
+          <label className="flex items-center gap-2 text-sm text-neutral-300">
             <input type="checkbox" className="h-4 w-4 accent-red-600" checked={viewShared} onChange={(e) => setViewShared(e.target.checked)} />
             Share with team
           </label>

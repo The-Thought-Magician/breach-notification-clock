@@ -181,8 +181,8 @@ export default function TemplatesPage() {
       <header className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-red-500">Notice Templates</p>
-          <h1 className="mt-1 text-2xl font-bold text-zinc-100">Template library</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="mt-1 text-2xl font-bold text-neutral-100">Template library</h1>
+          <p className="mt-1 text-sm text-neutral-500">
             Reusable breach-notice drafts with {'{{merge_fields}}'} that populate when an artifact is generated for an
             obligation.
           </p>
@@ -210,12 +210,12 @@ export default function TemplatesPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search name, body, jurisdiction..."
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 sm:max-w-xs"
+            className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-1.5 text-sm text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 sm:max-w-xs"
           />
           <select
             value={recipientFilter}
             onChange={(e) => setRecipientFilter(e.target.value)}
-            className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+            className="rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-1.5 text-sm text-neutral-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
           >
             <option value="">All recipients</option>
             {RECIPIENT_TYPES.map((r) => (
@@ -244,21 +244,21 @@ export default function TemplatesPage() {
                 return (
                   <div
                     key={t.id}
-                    className="flex flex-col rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition-colors hover:border-zinc-700"
+                    className="flex flex-col rounded-xl border border-neutral-800 bg-neutral-950/60 p-4 transition-colors hover:border-neutral-700"
                   >
                     <div className="flex items-start justify-between gap-2">
-                      <h3 className="font-semibold text-zinc-100">{t.name}</h3>
+                      <h3 className="font-semibold text-neutral-100">{t.name}</h3>
                       {t.recipient_type && (
                         <Badge tone={recipientTone(t.recipient_type)}>{t.recipient_type}</Badge>
                       )}
                     </div>
-                    <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
+                    <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-neutral-500">
                       {t.jurisdiction_code && (
-                        <span className="font-mono text-zinc-400">{t.jurisdiction_code}</span>
+                        <span className="font-mono text-neutral-400">{t.jurisdiction_code}</span>
                       )}
                       <span>{resolved.length} merge fields</span>
                     </div>
-                    <p className="mt-3 line-clamp-4 flex-1 whitespace-pre-wrap text-sm text-zinc-400">
+                    <p className="mt-3 line-clamp-4 flex-1 whitespace-pre-wrap text-sm text-neutral-400">
                       {t.body}
                     </p>
                     {resolved.length > 0 && (
@@ -266,13 +266,13 @@ export default function TemplatesPage() {
                         {resolved.slice(0, 5).map((f) => (
                           <span
                             key={f}
-                            className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-[11px] text-zinc-400"
+                            className="rounded bg-neutral-800 px-1.5 py-0.5 font-mono text-[11px] text-neutral-400"
                           >
                             {`{{${f}}}`}
                           </span>
                         ))}
                         {resolved.length > 5 && (
-                          <span className="text-[11px] text-zinc-600">+{resolved.length - 5}</span>
+                          <span className="text-[11px] text-neutral-600">+{resolved.length - 5}</span>
                         )}
                       </div>
                     )}
@@ -323,30 +323,30 @@ export default function TemplatesPage() {
             </div>
           )}
           <label className="block space-y-1">
-            <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Name</span>
+            <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Name</span>
             <input
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
               placeholder="e.g. GDPR Article 33 regulator notice"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           </label>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <label className="block space-y-1">
-              <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Jurisdiction code</span>
+              <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Jurisdiction code</span>
               <input
                 value={form.jurisdiction_code}
                 onChange={(e) => setForm((f) => ({ ...f, jurisdiction_code: e.target.value.toUpperCase() }))}
                 placeholder="optional, e.g. EU-DE"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 font-mono text-sm uppercase text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 font-mono text-sm uppercase text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
               />
             </label>
             <label className="block space-y-1">
-              <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Recipient type</span>
+              <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Recipient type</span>
               <select
                 value={form.recipient_type}
                 onChange={(e) => setForm((f) => ({ ...f, recipient_type: e.target.value }))}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
               >
                 <option value="">—</option>
                 {RECIPIENT_TYPES.map((r) => (
@@ -359,8 +359,8 @@ export default function TemplatesPage() {
           </div>
           <div className="space-y-1">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Body</span>
-              <span className="text-xs text-zinc-600">
+              <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Body</span>
+              <span className="text-xs text-neutral-600">
                 {formMergeFields.length} merge field{formMergeFields.length === 1 ? '' : 's'} detected
               </span>
             </div>
@@ -369,16 +369,16 @@ export default function TemplatesPage() {
               onChange={(e) => setForm((f) => ({ ...f, body: e.target.value }))}
               rows={10}
               placeholder="Dear {{regulator.name}},&#10;&#10;We are writing to notify you of a personal data breach affecting {{affected.count}} residents..."
-              className="w-full resize-y rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 font-mono text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full resize-y rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 font-mono text-sm text-neutral-100 placeholder:text-neutral-600 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
             <div className="flex flex-wrap gap-1 pt-1">
-              <span className="text-xs text-zinc-600">Insert:</span>
+              <span className="text-xs text-neutral-600">Insert:</span>
               {COMMON_FIELDS.map((f) => (
                 <button
                   key={f}
                   type="button"
                   onClick={() => insertField(f)}
-                  className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-[11px] text-zinc-300 hover:bg-zinc-700"
+                  className="rounded bg-neutral-800 px-1.5 py-0.5 font-mono text-[11px] text-neutral-300 hover:bg-neutral-700"
                 >
                   {`{{${f}}}`}
                 </button>
@@ -397,7 +397,7 @@ export default function TemplatesPage() {
               )}
               {preview.jurisdiction_code && <Badge tone="zinc">{preview.jurisdiction_code}</Badge>}
             </div>
-            <pre className="max-h-[50vh] overflow-auto whitespace-pre-wrap rounded-lg border border-zinc-800 bg-zinc-950 p-4 text-sm text-zinc-200">
+            <pre className="max-h-[50vh] overflow-auto whitespace-pre-wrap rounded-lg border border-neutral-800 bg-neutral-950 p-4 text-sm text-neutral-200">
               {preview.body}
             </pre>
           </div>
